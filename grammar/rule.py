@@ -36,7 +36,7 @@ class Rule:
             sub_tagged = [x[0] if self.construct[i] == 'w' else x[1][0] for i, x in enumerate(sub_tagged)]
             sub_tagged_str = str.join(' ', sub_tagged)
             if re.match(Rule.pattern_re_string(self.incorrect_pattern), sub_tagged_str):
-                matches.append((i, con_len + i))
+                matches.append(i)
         return matches
 
     def first_matched_window(self,sentence:Sentence):
@@ -48,4 +48,4 @@ class Rule:
             sub_tagged = [x[0] if self.construct[i] == 'w' else x[1][0] for i, x in enumerate(sub_tagged)]
             sub_tagged_str = str.join(' ', sub_tagged)
             if re.match(Rule.pattern_re_string(self.incorrect_pattern), sub_tagged_str):
-                return (i,i+con_len)
+                return i
