@@ -38,4 +38,7 @@ _ptb2bnc_map ={
 }
 
 def PTB2BNC(penn_treebank_tagged_sentence):
-    pass
+    bnc_sent=[]
+    for word_tag in penn_treebank_tagged_sentence:
+        bnc_sent.append((word_tag[0],_ptb2bnc_map[word_tag[1]])) # Replace the Penn Treebank tag with BNC's
+    return bnc_sent
