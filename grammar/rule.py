@@ -1,3 +1,6 @@
+import re
+from language.sentence import Sentence
+
 class Rule:
     #construct: an array of either w or p values, indicating words or POS options
     #pattern: an array of possible choices for each construct
@@ -21,3 +24,17 @@ class Rule:
                 joined_group=group
             string.append(joined_group)
         return str.join(' ',string)
+
+    # Matches range is (inclusive,exclusive)
+    def matched_constructed_windows(self, sentence: Sentence):
+        tagged = sentence.get_bnc_tagged()
+        con_len = len(self.construct)
+        matches = []
+        for i in range(len(tagged) - con_len + 1):
+            sub_tagged = tagged[i:con_len + i]
+            # TODO take all possible POS tags into account
+            sub_tagged = [x[0] if self.construct[i] == 'w' else x[1][0] for i, x in enumerate(sub_tagged)]
+            sub_tagged_str = str.join(' ', sub_tagged)
+            if re.match(Rule.pattern_re_string(self.incorrect_pattern), sub_tagged_str):
+                matches.append((i, con_len + i))
+        return matches
