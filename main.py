@@ -1,9 +1,7 @@
-from tagger.PTB import penn_treebank_tag
-from tagger.BNC import PTB2BNC
-
+from language.sentence import Sentence
 def main():
-    ptb=penn_treebank_tag('i am a cat')
-    print(PTB2BNC(ptb))
+    sent=Sentence('i am a cat')
+    print(sent.get_bnc_tagged())
 
 if __name__ == '__main__':
     main()
