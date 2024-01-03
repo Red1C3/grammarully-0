@@ -26,7 +26,7 @@ class Rule:
         return str.join(' ',string)
 
     # Matches range is (inclusive,exclusive)
-    def matched_constructed_windows(self, sentence: Sentence):
+    def matched_windows(self, sentence: Sentence):
         tagged = sentence.get_bnc_tagged()
         con_len = len(self.construct)
         matches = []
