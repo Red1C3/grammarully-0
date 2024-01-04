@@ -12,5 +12,7 @@ class Checker:
                 i = rule.first_matched_window(sentence)
                 if i != -1:
                     correct_window = rule.correct_window(sentence, i)
-                    print(sentence.subsititue(i, rule.con_len, correct_window.raw_sentence))
-                    return
+                    sentence = Sentence(sentence.subsititue(i, rule.con_len, correct_window.raw_sentence))
+            print(sentence.raw_sentence)
+
+        return sentence
