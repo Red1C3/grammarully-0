@@ -50,6 +50,7 @@ class Rule:
             sub_tagged_str = str.join(' ', sub_tagged)
             if re.match(Rule.pattern_re_string(self.incorrect_pattern), sub_tagged_str):
                 return i
+        return -1
 
     #TODO handle case where cannot correct
     def correct_window(self,sentence:Sentence,i:int):

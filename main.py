@@ -1,9 +1,10 @@
 from language.sentence import Sentence
 from grammar.rule import Rule
+from grammar.checker import Checker
 def main():
     rule = Rule(['p', 'p'], ['DT0', 'NN0'],({'const':'the'},{'idx':1}))
-    error_idx=rule.first_matched_window(Sentence('i am a cat i am a cats'))
-    print(rule.correct_window(Sentence('i am a cat i am a cats'),error_idx).raw_sentence)
+    checker = Checker([rule])
+    checker.check(Sentence('i am a cat'))
 
 if __name__ == '__main__':
     main()
