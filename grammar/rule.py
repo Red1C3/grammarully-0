@@ -63,3 +63,6 @@ class Rule:
                 correct.append(d['const'])
         #TODO replace only the window before creating the new sent
         return Sentence(str.join(' ',correct))
+
+    def __str__(self):
+        return self.pattern_re_string(self.construct)+" : "+self.pattern_re_string(self.incorrect_pattern) + "-->" + str(self.correction_dict)
