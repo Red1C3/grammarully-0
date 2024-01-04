@@ -5,8 +5,14 @@ from language.sentence import Sentence
 class Checker:
     def __init__(self, rules: list[Rule]):
         self.rules = rules
+        self.initRules()
+    
     def __init__(self):
         self.rules = []
+        self.initRules()
+
+    def initRules(self):
+        self.rules.append(Rule(['w', 'w', 'p'], ["more",("a","an"), 'AJ0'],({'idx':1},{'idx':0},{'idx':2}))) #4
 
     def check(self, sentence: Sentence, max_corrects=10):
         for _ in range(max_corrects):
