@@ -7,10 +7,6 @@ class Checker:
         self.rules = rules
         self.initRules()
     
-    def __init__(self):
-        self.rules = []
-        self.initRules()
-
     def initRules(self):
         self.rules.append(Rule(['w', 'w', 'p'], ["more",("a","an"), 'AJ0'],({'idx':1},{'idx':0},{'idx':2}))) #4
 
