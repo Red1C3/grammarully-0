@@ -5,6 +5,8 @@ from language.sentence import Sentence
 class Checker:
     def __init__(self, rules: list[Rule]):
         self.rules = rules
+    def __init__(self):
+        self.rules = []
 
     def check(self, sentence: Sentence, max_corrects=10):
         for _ in range(max_corrects):
