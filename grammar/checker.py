@@ -3,10 +3,13 @@ from language.sentence import Sentence
 
 
 class Checker:
-    def __init__(self, rules: list[Rule]):
-        self.rules = rules
+    def __init__(self, *args):
+        if len(args) != 0:
+            self.rules = args[0]
+        else:
+            self.rules = []
         self.initRules()
-    
+
     def initRules(self):
         self.rules.append(Rule(['w', 'w', 'p'], ["more",("a","an"), 'AJ0'],({'idx':1},{'idx':0},{'idx':2}))) #4
 
