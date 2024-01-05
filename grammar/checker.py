@@ -154,9 +154,9 @@ class Checker:
         self.rules.append(
             Rule(['w', 'p'], ['its', ('CJC', 'AT0', 'DT0', 'EX0', 'PRF', 'PRP',
                  'VM0', 'POS', 'PNP', 'AV0', 'AVP', 'TO0', 'DTQ',
-                                      'PNQ', 'DTQ', 'AVQ')],
+                                      'PNQ', 'DTQ', 'AVQ', 'VVI', 'VVZ', 'VVG')],
                  ({'const': 'it'}, {'const': 'is'}, {'idx': 1}))
-        )  # 51
+        )  # 51+52+53
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):
