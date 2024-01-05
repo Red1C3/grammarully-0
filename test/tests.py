@@ -39,6 +39,7 @@ _test_pairs = [
     ('he is less weirder then his cat', 'he is less weirder than his cat'),
     ('he is more cat then his cat', 'he is more cat than his cat'),
     # ('the the cat is nice', 'the cat is nice') FIXME fails due to POS ambiguety
+    ('what do you mean than', 'what do you mean then')
 ]
 
 

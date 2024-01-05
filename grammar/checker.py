@@ -97,7 +97,11 @@ class Checker:
         self.rules.append(
             Rule(['p', 'p'], ['AT0', 'AT0'],
                  ({'idx': 0}))
-        )
+        )  # 30
+        self.rules.append(
+            Rule(['w', 'p'], ['than', 'SENT_END'],
+                 ({'const': 'then'}, {'idx': 1}))
+        )  # 31
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):
