@@ -108,6 +108,10 @@ class Checker:
             'VHN', 'VHZ', 'VM0', 'VVB', 'VVD', 'VVG', 'VVN', 'VVZ')],
                  ({'idx': 0}, {'idx': 1}, {'idx': 2, 'tense': INFINITIVE}))
         )  # 33
+        self.rules.append(
+            Rule(['w', 'p'], ['or', 'SENT_END'],
+                 ({'idx': 1},))
+        )  # 34
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):

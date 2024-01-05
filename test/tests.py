@@ -41,7 +41,8 @@ _test_pairs = [
     # ('the the cat is nice', 'the cat is nice') FIXME fails due to POS ambiguety
     ('what do you mean than', 'what do you mean then'),
     ('i am eager to trying out dying', 'i am eager to try out dying'),
-    ('i a eager to trying out dying', 'i am eager to try out dying')
+    ('i a eager to trying out dying', 'i am eager to try out dying'),
+    ('should we eat or', 'should we eat')
 ]
 
 
