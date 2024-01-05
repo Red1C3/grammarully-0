@@ -1,8 +1,10 @@
 from grammar.checker import Checker
 from language.sentence import Sentence
 
+# incorrect,correct
 _test_pairs = [
     ('the only on i can think of', 'the only one i can think of'),
+    ('their are two cats', 'there are two cats')
 ]
 
 
