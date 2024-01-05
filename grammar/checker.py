@@ -91,9 +91,9 @@ class Checker:
                  ({'const': 'you'}, {'const': 'are'}, {'idx': 1}))
         )  # 27
         self.rules.append(
-            Rule(['p','w'],['AJC','that'],
-                 ({'idx':0},{'const':'than'}))
-        ) # 28
+            Rule(['p', 'w'], ['AJC', 'that'],
+                 ({'idx': 0}, {'const': 'than'}))
+        )  # 28
         self.rules.append(
             Rule(['w', 'p', 'w'], [('less', 'more'), ('AJ0', 'NN1', 'NN0'), 'then'],
                  ({'idx': 0}, {'idx': 1}, {'const': 'than'}))
@@ -141,9 +141,13 @@ class Checker:
                  ({'const': 'cannot'},))
         )  # 48
         self.rules.append(
-            Rule(['w','w'],[('more','less'),('then','as')],
-                 ({'idx':0},{'const':'than'}))
-        ) # 49
+            Rule(['w', 'w'], [('more', 'less'), ('then', 'as')],
+                 ({'idx': 0}, {'const': 'than'}))
+        )  # 49
+        self.rules.append(
+            Rule(['p', 'w'], ['AJC', ('then', 'as')],
+                 ({'idx': 0}, {'const': 'than'}))
+        )  # 50
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):
