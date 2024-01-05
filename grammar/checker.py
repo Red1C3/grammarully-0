@@ -53,6 +53,10 @@ class Checker:
             Rule(['w', 'w'], ['through', 'away'],
                  ({'const': 'throw'}, {'idx': 1}))
         )  # 16
+        self.rules.append(
+            Rule(['w', 'w', 'w'], ['or', 'way', ('it', 'that', 'this')],
+                 ({'idx': 0}, {'const': 'was'}, {'idx': 2}))
+        )  # 17
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):

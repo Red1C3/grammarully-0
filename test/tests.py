@@ -19,7 +19,8 @@ _test_pairs = [
     ('he went about being a cat and so one', 'he went about being a cat and so on'),
     ('i will through away the cat', 'i will throw away the cat'),  # He regrets it
     ('please not that you are nut sure if you are living in a simulation',
-     'please note that you are not sure if you are living in a simulation')
+     'please note that you are not sure if you are living in a simulation'),
+    ('or way that a cat', 'or was that a cat')
 ]
 
 
