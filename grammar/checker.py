@@ -24,7 +24,11 @@ class Checker:
         self.rules.append(
             Rule(['w', 'w', 'w'], ['the', 'only', 'on'],
                  ({'idx': 0}, {'idx': 1}, {'const': 'one'}))
-        ) # 9
+        )  # 9
+        self.rules.append(
+            Rule(['w', 'w'], ['their', ('is', 'are')],
+                 ({'const': 'there'}, {'idx': 1}))
+        )  # 10
 
     def check(self, sentence: Sentence, max_corrects=10):
         for _ in range(max_corrects):
