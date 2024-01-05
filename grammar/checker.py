@@ -19,9 +19,11 @@ class Checker:
         self.rules.append(Rule(['w', 'w'], [('some', 'certain'), 'extend'], ({
                           'idx': 0}, {'const': 'extent'})))  # 6
         self.rules.append(
-            Rule(['w', 'w'], ['is', 'were'], ({'idx': 0}, {'const': 'where'})))  # 7
+            # 7
+            Rule(['w', 'w'], ['is', 'were'], ({'idx': 0}, {'const': 'where'})))
         self.rules.append(
-            Rule(['p', 'w'], ['CRD', 'ore'], ({'idx': 0}, {'const': 'or'})))  # 8
+            # 8
+            Rule(['p', 'w'], ['CRD', 'ore'], ({'idx': 0}, {'const': 'or'})))
         self.rules.append(
             Rule(['w', 'w', 'w'], ['the', 'only', 'on'],
                  ({'idx': 0}, {'idx': 1}, {'const': 'one'}))
@@ -130,7 +132,8 @@ class Checker:
         )  # 41
         self.rules.append(
             Rule(['w', 'p'], [('is', 'was'), ('VVI', 'VVZ')],
-                 ({'idx': 0}, {'idx': 1, 'tense': PARTICIPLE}))  # TODO check passing participle returns V3
+                 # TODO check passing participle returns V3
+                 ({'idx': 0}, {'idx': 1, 'tense': PARTICIPLE}))
         )  # 44+45
         self.rules.append(
             Rule(['w', 'p', 'w'], ['as', ('AJ0', 'AV0'), ('like', 'than', 'then')],
@@ -148,6 +151,12 @@ class Checker:
             Rule(['p', 'w'], ['AJC', ('then', 'as')],
                  ({'idx': 0}, {'const': 'than'}))
         )  # 50
+        self.rules.append(
+            Rule(['w', 'p'], ['its', ('CJC', 'AT0', 'DT0', 'EX0', 'PRF', 'PRP',
+                 'VM0', 'POS', 'PNP', 'AV0', 'AVP', 'TO0', 'DTQ',
+                                      'PNQ', 'DTQ', 'AVQ')],
+                 ({'const': 'it'}, {'const': 'is'}, {'idx': 1}))
+        )  # 51
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):
