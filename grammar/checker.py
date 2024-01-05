@@ -150,12 +150,13 @@ class Checker:
         )  # 50
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
-        for _ in range(max_iterations):
+        for j in range(max_iterations):
             made_changes = False
             for rule in self.rules:
                 i = rule.first_matched_window(sentence)
                 if i != -1:
                     made_changes = True
+                    sentence.problems.append([j,rule])
                     correct_window = rule.correct_window(sentence, i)
                     sentence.subsititue(
                         i, rule.con_len, correct_window)

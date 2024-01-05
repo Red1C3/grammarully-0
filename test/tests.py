@@ -74,13 +74,17 @@ def run_tests(max_iterations=10):
             print(t[0]+' -> ' + t[1])
             print('CHECKER RESULT:')
             print(res[0])
+            print('Used rules:')
+            for rule in res[2]:
+                print('index:',rule[0],'| Rule:',rule[1])
             print('='*20)
     print('FINISHED TESTING')
 
 
 def _test(incorrect: str, correct: str, checker: Checker, max_iterations):
-    checked = checker.check(Sentence(incorrect), False, max_iterations)
+    incorrect_sent = Sentence(incorrect)
+    checked = checker.check(incorrect_sent, False, max_iterations)
     if checked.raw_sentence == Sentence(correct).raw_sentence:
         return True
     else:
-        return (checked.raw_sentence, correct)
+        return (checked.raw_sentence, correct,incorrect_sent.problems)

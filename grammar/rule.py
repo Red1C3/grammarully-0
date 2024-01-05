@@ -85,4 +85,4 @@ class Rule:
         return str.join(' ', correct)
 
     def __str__(self):
-        return self.pattern_re_string(self.construct)+" : "+self.pattern_re_string(self.incorrect_pattern) + "-->" + str(self.correction_dict)
+        return self.pattern_re_string(self.construct)[1:-1]+" : "+self.pattern_re_string(self.incorrect_pattern)[1:-1] + "-->" + str(self.correction_dict)
