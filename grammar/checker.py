@@ -11,9 +11,14 @@ class Checker:
         self.initRules()
 
     def initRules(self):
-        self.rules.append(Rule(['w', 'w', 'p'], ["more",("a","an"), 'AJ0'],({'idx':1},{'idx':0},{'idx':2}))) #4
-        self.rules.append(Rule(['w', 'w','w'], ['think', 'you', ('a','an')],({'idx':0},{'idx':1},{'const':'are'}))) #5
-        self.rules.append(Rule(['w','w'],[('some','certain'),'extend'],({'idx':0},{'const':'extent'}))) #6
+        self.rules.append(Rule(['w', 'w', 'p'], ["more", ("a", "an"), 'AJ0'], ({
+                          'idx': 1}, {'idx': 0}, {'idx': 2})))  # 4
+        self.rules.append(Rule(['w', 'w', 'w'], ['think', 'you', ('a', 'an')], ({
+                          'idx': 0}, {'idx': 1}, {'const': 'are'})))  # 5
+        self.rules.append(Rule(['w', 'w'], [('some', 'certain'), 'extend'], ({
+                          'idx': 0}, {'const': 'extent'})))  # 6
+        self.rules.append(
+            Rule(['w', 'w'], ['is', 'were'], ({'idx': 0}, {'const': 'where'})))  # 7
 
     def check(self, sentence: Sentence, max_corrects=10):
         for _ in range(max_corrects):
@@ -23,8 +28,9 @@ class Checker:
                 if i != -1:
                     made_changes = True
                     correct_window = rule.correct_window(sentence, i)
-                    sentence = Sentence(sentence.subsititue(i, rule.con_len, correct_window.raw_sentence))
-            if not(made_changes):
+                    sentence = Sentence(sentence.subsititue(
+                        i, rule.con_len, correct_window.raw_sentence))
+            if not (made_changes):
                 break
             else:
                 print(sentence.raw_sentence)
