@@ -69,6 +69,10 @@ class Checker:
             Rule(['w', 'p', 'w'], ['do', 'XX0', 'us'],
                  ({'idx': 0}, {'idx': 1}, {'const': 'use'}))
         )  # 20
+        self.rules.append(
+            Rule(['p', 'w', 'w'], ['VVB', 'to', 'use'],
+                 ({'idx': 0, 'tense': 'past'}, {'idx': 1}, {'idx': '2'}))
+        )  # 21
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):
