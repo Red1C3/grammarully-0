@@ -27,7 +27,8 @@ _test_pairs = [
     # ('i use to use the cat','i used to use the cat') FIXME fails because PTB never tags lexical verbs as special lexical verbs
     ('i thing it is a good idea', 'i think it is a good idea'),
     ('he thing so', 'he thinks so'),
-    ('we things about it', 'we think about it')
+    ('we things about it', 'we think about it'),
+    # ('were are you now','where are you now') FIXME fails because PTB does not have a special tag for "be" verb
 ]
 
 
