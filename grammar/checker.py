@@ -30,8 +30,8 @@ class Checker:
                  ({'const': 'there'}, {'idx': 1}))
         )  # 10
 
-    def check(self, sentence: Sentence, max_corrects=10):
-        for _ in range(max_corrects):
+    def check(self, sentence: Sentence, verbose=False, max_iterations=10):
+        for _ in range(max_iterations):
             made_changes = False
             for rule in self.rules:
                 i = rule.first_matched_window(sentence)
@@ -42,7 +42,7 @@ class Checker:
                         i, rule.con_len, correct_window.raw_sentence))
             if not (made_changes):
                 break
-            else:
+            elif verbose:
                 print(sentence.raw_sentence)
 
         return sentence
