@@ -21,6 +21,10 @@ class Checker:
             Rule(['w', 'w'], ['is', 'were'], ({'idx': 0}, {'const': 'where'})))  # 7
         self.rules.append(
             Rule(['p', 'w'], ['CRD', 'ore'], ({'idx': 0}, {'const': 'or'})))  # 8
+        self.rules.append(
+            Rule(['w', 'w', 'w'], ['the', 'only', 'on'],
+                 ({'idx': 0}, {'idx': 1}, {'const': 'one'}))
+        ) # 9
 
     def check(self, sentence: Sentence, max_corrects=10):
         for _ in range(max_corrects):
