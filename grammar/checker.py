@@ -157,6 +157,15 @@ class Checker:
                                       'PNQ', 'DTQ', 'AVQ', 'VVI', 'VVZ', 'VVG')],
                  ({'const': 'it'}, {'const': 'is'}, {'idx': 1}))
         )  # 51+52+53
+        self.rules.append(
+            Rule(['w', 'p'], ['no', ('VM0', 'VVI', 'VVD', 'VVN', 'CJC', 'DT0', 'AT0',
+                 'EX0', 'PRF', 'PRP', 'NP0', 'AVP', 'DTQ', 'PNQ', 'AVQ')],
+                 ({'const': 'now'}, {'idx': 1}))
+        )  # 54+55
+        self.rules.append(
+            Rule(['w', 'w'], ['no', ('were', 'was', 'been', 'be', 'is')],
+                 ({'const': 'now'}, {'idx': 1}))
+        )  # 56
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):

@@ -64,7 +64,9 @@ _test_pairs = [
     ('your gone', 'you are gone'),
     ('its a good life we lead my brother', 'it is a good life we lead my brother'),
     ('its the choice my cat made', 'it is the choice my cat made'),
-    ('its going to be a cute cat', 'it is going to be a cute cat')
+    ('its going to be a cute cat', 'it is going to be a cute cat'),
+    ('no is not the right time', 'now is not the right time'),
+    ('no you can not feed the cat', 'no you cannot feed the cat')
 ]
 
 
