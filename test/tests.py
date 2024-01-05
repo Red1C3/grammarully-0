@@ -52,7 +52,8 @@ _test_pairs = [
     # ('he is go home', 'he is gone home') #FIXME fails because the tagger assumes go adjactive
     ('his cat is as big like mine', 'his cat is as big as mine'),
     ('his cat is as large than mine', 'his cat is as large as mine'),
-    ('his cat is as small then my cat', 'his cat is as small as my cat')
+    ('his cat is as small then my cat', 'his cat is as small as my cat'),
+    ('we can not run from the cat forever', 'we cannot run from the cat forever')
 ]
 
 

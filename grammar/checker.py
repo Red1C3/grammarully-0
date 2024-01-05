@@ -132,6 +132,10 @@ class Checker:
             Rule(['w', 'p', 'w'], ['as', ('AJ0', 'AV0'), ('like', 'than', 'then')],
                  ({'idx': 0}, {'idx': 1}, {'const': 'as'}))
         )  # 46
+        self.rules.append(
+            Rule(['w', 'w'], ['can', 'not'],
+                 ({'const': 'cannot'},))
+        )  # 48
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):
