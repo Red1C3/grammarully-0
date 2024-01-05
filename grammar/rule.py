@@ -13,7 +13,7 @@ class Rule:
     # example:
     # construct: [w,p,w]
     # pattern: [(and,no),(NN0,NN1),(meow,cat)]
-    def __init__(self, incorrect_construct, incorrect_pattern, correction_dict: (list[dict] | None) = None, hint=None):
+    def __init__(self, incorrect_construct, incorrect_pattern, correction_dict: (tuple | None) = None, hint=None):
         self.construct=incorrect_construct
         self.incorrect_pattern=incorrect_pattern
         self.correction_dict=correction_dict
