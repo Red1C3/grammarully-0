@@ -57,6 +57,10 @@ class Checker:
             Rule(['w', 'w', 'w'], ['or', 'way', ('it', 'that', 'this')],
                  ({'idx': 0}, {'const': 'was'}, {'idx': 2}))
         )  # 17
+        self.rules.append(
+            Rule(['p', 'w'], ['AT0', 'responds'],
+                 ({'idx': 0}, {'const': 'response'}))
+        )  # 18
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):
