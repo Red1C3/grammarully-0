@@ -61,6 +61,10 @@ class Checker:
             Rule(['p', 'w'], ['AT0', 'responds'],
                  ({'idx': 0}, {'const': 'response'}))
         )  # 18
+        self.rules.append(
+            Rule(['w', 'w'], [('think', 'know'), 'off'],
+                 ({'idx': 0}, {'const': 'of'}))
+        )  # 19
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):

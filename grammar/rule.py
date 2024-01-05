@@ -1,6 +1,9 @@
 import re
 from language.sentence import Sentence
 
+
+# TODO when adding verbs tense changing, add v-type to the construct which replaces the verb with all its
+# tenses
 class Rule:
     #construct: an array of either w or p values, indicating words or POS options
     #pattern: an array of possible choices for each construct

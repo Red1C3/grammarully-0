@@ -22,6 +22,7 @@ _test_pairs = [
      'please note that you are not sure if you are living in a simulation'),
     ('or way that a cat', 'or was that a cat'),
     # ('thanks for the responds','thanks for the response') FIXME fails due to ambiguous tagging
+    ('the only thing i can think off is cats', 'the only thing i can think of is cats')
 ]
 
 
