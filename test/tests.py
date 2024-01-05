@@ -37,7 +37,8 @@ _test_pairs = [
     ('he has one cat not too', 'he has one cat not two'),
     ('i think your confused about it', 'i think you are confused about it'),
     ('he is less weirder then his cat', 'he is less weirder than his cat'),
-    ('he is more cat then his cat', 'he is more cat than his cat')
+    ('he is more cat then his cat', 'he is more cat than his cat'),
+    # ('the the cat is nice', 'the cat is nice') FIXME fails due to POS ambiguety
 ]
 
 
