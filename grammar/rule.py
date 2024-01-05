@@ -25,7 +25,7 @@ class Rule:
             else:
                 joined_group=group
             string.append(joined_group)
-        return str.join(' ',string)
+        return '^'+str.join(' ',string)+'$'
 
     # Matches range is (inclusive,exclusive)
     def matched_windows(self, sentence: Sentence):
