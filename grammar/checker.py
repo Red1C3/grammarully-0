@@ -85,6 +85,10 @@ class Checker:
             Rule(['w', 'w', 'p'], ['not', 'too', ('SENT_END', 'NN0', 'NN1', 'NN2')],
                  ({'idx': 0}, {'const': 'two'}, {'idx': 2}))
         )  # 26
+        self.rules.append(
+            Rule(['w', 'p'], ['your', 'VVN'],
+                 ({'const': 'you'}, {'const': 'are'}, {'idx': 1}))
+        )  # 27
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):

@@ -31,7 +31,8 @@ _test_pairs = [
     # ('were are you now','where are you now') FIXME fails because PTB does not have a special tag for "be" verb
     ('he has two cats not too dogs', 'he has two cats not two dogs'),
     ('we are not too far from home', 'we are not too far from home'),
-    ('he has one cat not too', 'he has one cat not two')
+    ('he has one cat not too', 'he has one cat not two'),
+    ('i think your confused about it', 'i think you are confused about it')
 ]
 
 
