@@ -120,6 +120,10 @@ class Checker:
             Rule(['w', 'w'], ['is', ('should', 'could', 'would')],
                  ({'const': 'it'}, {'idx': 1}))
         )  # 37
+        self.rules.append(
+            Rule(['w','p'],['did',('VVD','VVG','VVN','VVZ')],
+                 ({'idx':0},{'idx':1,'tense':INFINITIVE}))
+        ) # 41
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):
