@@ -1,4 +1,7 @@
 import re
+
+from pattern.text import SINGULAR, PLURAL
+
 from language.sentence import Sentence
 from pattern.text.en import conjugate
 
@@ -63,7 +66,20 @@ class Rule:
                 word = tagged[d['idx']][0]
             if 'const' in d:
                 word = d['const']
-            if 'tense' in d:  # NOT TESTED YET
+            if 'pronoun_idx' in d and 'tense' in d:  # NOT TESTED YET
+                tense = d['tense']
+                pronoun = tagged[d['pronoun_idx']][0]
+                if pronoun == 'i':
+                    word = conjugate(verb=word, person=1, number=SINGULAR, tense=tense)
+                elif pronoun in ['he', 'she', 'it']:
+                    word = conjugate(verb=word, person=3, number=SINGULAR, tense=tense)
+                elif pronoun == 'they':
+                    word = conjugate(verb=word, person=3, number=PLURAL, tense=tense)
+                elif pronoun == 'we':
+                    word = conjugate(verb=word, person=1, number=PLURAL, tense=tense)
+                elif pronoun == 'you':
+                    word = conjugate(verb=word, perons=2, number=PLURAL, tense=tense)  # I know it can be singular
+            elif 'tense' in d:  # NOT TESTED YET
                 word = conjugate(verb=word, tense=d['tense'])
             correct.append(word)
         return str.join(' ', correct)
