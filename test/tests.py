@@ -29,6 +29,9 @@ _test_pairs = [
     ('he thing so', 'he thinks so'),
     ('we things about it', 'we think about it'),
     # ('were are you now','where are you now') FIXME fails because PTB does not have a special tag for "be" verb
+    ('he has two cats not too dogs', 'he has two cats not two dogs'),
+    ('we are not too far from home', 'we are not too far from home'),
+    ('he has one cat not too', 'he has one cat not two')
 ]
 
 

@@ -81,6 +81,10 @@ class Checker:
             Rule(['w', 'p'], ['were', 'VBB'],
                  ({'const', 'where'}, {'idx': 1}))
         )  # 23
+        self.rules.append(
+            Rule(['w', 'w', 'p'], ['not', 'too', ('SENT_END', 'NN0', 'NN1', 'NN2')],
+                 ({'idx': 0}, {'const': 'two'}, {'idx': 2}))
+        )  # 26
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):
