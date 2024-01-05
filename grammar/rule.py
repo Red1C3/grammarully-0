@@ -27,7 +27,6 @@ class Rule:
             string.append(joined_group)
         return '^'+str.join(' ',string)+'$'
 
-    # Matches range is (inclusive,exclusive)
     def matched_windows(self, sentence: Sentence):
         tagged = sentence.get_bnc_tagged()
         matches = []
@@ -61,7 +60,6 @@ class Rule:
                 correct.append(tagged[d['idx']][0])
             if 'const' in d:
                 correct.append(d['const'])
-        #TODO replace only the window before creating the new sent
         return Sentence(str.join(' ',correct))
 
     def __str__(self):
