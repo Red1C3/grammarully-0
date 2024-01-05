@@ -126,8 +126,12 @@ class Checker:
         )  # 41
         self.rules.append(
             Rule(['w', 'p'], [('is', 'was'), ('VVI', 'VVZ')],
-                 ({'idx': 0}, {'idx': 1, 'tense': PARTICIPLE})) #TODO check passing participle returns V3
+                 ({'idx': 0}, {'idx': 1, 'tense': PARTICIPLE}))  # TODO check passing participle returns V3
         )  # 44+45
+        self.rules.append(
+            Rule(['w', 'p', 'w'], ['as', ('AJ0', 'AV0'), ('like', 'than', 'then')],
+                 ({'idx': 0}, {'idx': 1}, {'const': 'as'}))
+        )  # 46
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):
