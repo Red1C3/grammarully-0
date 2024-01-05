@@ -16,7 +16,8 @@ _test_pairs = [
     ('please not that we are cats now', 'please note that we are cats now'),
     ('i am nut sure if i am a cat', 'i am not sure if i am a cat'),
     ('i am nut certain if i am a cat', 'i am not certain if i am a cat'),
-    ('he went about being a cat and so one', 'he went about being a cat and so on')
+    ('he went about being a cat and so one', 'he went about being a cat and so on'),
+    ('i will through away the cat', 'i will throw away the cat'),  # He regrets it
 ]
 
 
