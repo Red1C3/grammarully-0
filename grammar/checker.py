@@ -41,6 +41,10 @@ class Checker:
             Rule(['w', 'w', 'w'], ['please', 'not', 'that'],
                  ({'idx': 0}, {'const': 'note'}, {'idx': 2}))
         )  # 13
+        self.rules.append(
+            Rule(['w', 'p'], ['nut', ('AV0', 'AJ0')],
+                 ({'const': 'not'}, {'idx': 1}))
+        )  # 14
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):

@@ -13,7 +13,9 @@ _test_pairs = [
     ('i an a cat', 'i am a cat'),
     ('i a a cat', 'i am a cat'),
     ('i new it was a cat', 'i knew it was a cat'),
-    ('please not that we are cats now', 'please note that we are cats now')
+    ('please not that we are cats now', 'please note that we are cats now'),
+    ('i am nut sure if i am a cat', 'i am not sure if i am a cat'),
+    ('i am nut certain if i am a cat', 'i am not certain if i am a cat')
 ]
 
 
