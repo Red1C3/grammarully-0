@@ -25,6 +25,9 @@ _test_pairs = [
     ('the only thing i can think off is cats', 'the only thing i can think of is cats'),
     # ('please do not us the cat','please do not use the cat') FIXME fails due to PTB2BNC mapping, force tag negation to XX0 tag to fix
     # ('i use to use the cat','i used to use the cat') FIXME fails because PTB never tags lexical verbs as special lexical verbs
+    ('i thing it is a good idea', 'i think it is a good idea'),
+    ('he thing so', 'he thinks so'),
+    ('we things about it', 'we think about it')
 ]
 
 
