@@ -91,6 +91,10 @@ class Checker:
                  ({'const': 'you'}, {'const': 'are'}, {'idx': 1}))
         )  # 27
         self.rules.append(
+            Rule(['p','w'],['AJC','that'],
+                 ({'idx':0},{'const':'than'}))
+        ) # 28
+        self.rules.append(
             Rule(['w', 'p', 'w'], [('less', 'more'), ('AJ0', 'NN1', 'NN0'), 'then'],
                  ({'idx': 0}, {'idx': 1}, {'const': 'than'}))
         )  # 29
