@@ -1,6 +1,6 @@
 from grammar.rule import Rule
 from language.sentence import Sentence
-from pattern.text.en import PAST, PRESENT
+from pattern.text.en import PAST, PRESENT, INFINITIVE
 
 
 class Checker:
@@ -102,6 +102,12 @@ class Checker:
             Rule(['w', 'p'], ['than', 'SENT_END'],
                  ({'const': 'then'}, {'idx': 1}))
         )  # 31
+        self.rules.append(
+            Rule(['w', 'w', 'p'], ['eager', 'to', (
+            'VBB', 'VBD', 'VBG', 'VBN', 'VBZ', 'VDB', 'VDD', 'VDG', 'VDI', 'VDN', 'VDZ', 'VHB', 'VHD', 'VHG', 'VHI',
+            'VHN', 'VHZ', 'VM0', 'VVB', 'VVD', 'VVG', 'VVN', 'VVZ')],
+                 ({'idx': 0}, {'idx': 1}, {'idx': 2, 'tense': INFINITIVE}))
+        )  # 33
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):
