@@ -33,6 +33,10 @@ class Checker:
             Rule(['p', 'w', 'w'], ['SENT_START', 'i', ('a', 'an')],
                  ({'idx': 0}, {'idx': 1}, {'const': 'am'}))
         )  # 11
+        self.rules.append(
+            Rule(['w', 'w'], ['i', 'new'],
+                 ({'idx': 0}, {'const': 'knew'}))
+        )  # 12
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):

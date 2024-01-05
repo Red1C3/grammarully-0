@@ -11,7 +11,8 @@ _test_pairs = [
     ('do you have one ore more cats', 'do you have one or more cats'),
     ('their are some cats here', 'there are some cats here'),
     ('i an a cat', 'i am a cat'),
-    ('i a a cat', 'i am a cat')
+    ('i a a cat', 'i am a cat'),
+    ('i new it was a cat', 'i knew it was a cat')
 ]
 
 
