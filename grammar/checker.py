@@ -112,6 +112,10 @@ class Checker:
             Rule(['w', 'p'], ['or', 'SENT_END'],
                  ({'idx': 1},))
         )  # 34
+        self.rules.append(
+            Rule(['w', 'p'], [('more', 'most'), 'AJS'],
+                 ({'idx': 1},))
+        )  # 36
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):
