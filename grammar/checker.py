@@ -1,6 +1,6 @@
 from grammar.rule import Rule
 from language.sentence import Sentence
-
+from pattern.text.en import PAST, PRESENT
 
 class Checker:
     def __init__(self, *args):
@@ -71,7 +71,7 @@ class Checker:
         )  # 20
         self.rules.append(
             Rule(['p', 'w', 'w'], ['VVB', 'to', 'use'],
-                 ({'idx': 0, 'tense': 'past'}, {'idx': 1}, {'idx': '2'}))
+                 ({'idx': 0, 'tense': PAST}, {'idx': 1}, {'idx': '2'}))
         )  # 21
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):

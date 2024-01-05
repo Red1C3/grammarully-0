@@ -1,6 +1,6 @@
 import re
 from language.sentence import Sentence
-
+from pattern.text.en import conjugate
 
 # TODO when adding verbs tense changing, add v-type to the construct which replaces the verb with all its
 # tenses
@@ -60,9 +60,12 @@ class Rule:
         correct=[]
         for d in self.correction_dict:
             if 'idx' in d:
-                correct.append(tagged[d['idx']][0])
+                word = tagged[d['idx']][0]
             if 'const' in d:
-                correct.append(d['const'])
+                word = d['const']
+            if 'tense' in d:  # NOT TESTED YET
+                word = conjugate(verb=word, tense=d['tense'])
+            correct.append(word)
         return str.join(' ', correct)
 
     def __str__(self):
