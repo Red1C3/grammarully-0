@@ -2,24 +2,14 @@ from tagger.PTB import penn_treebank_tag
 from tagger.BNC import PTB2BNC
 from nltk import word_tokenize
 
-
 class Sentence:
-    START_TOKEN = ('SENT_START', ['SENT_START'])
-    END_TOKEN = ('SENT_END', ['SENT_END'])
-
-    def __init__(self, sentence: str):
-        self.raw_sentence = sentence
-        self.problems = []
-
+    def __init__(self,sentence:str):
+        self.raw_sentence=sentence
+        self.problems=[]
     def get_bnc_tagged(self):
-        bnc = PTB2BNC(penn_treebank_tag(self.raw_sentence))
-        bnc.insert(0, Sentence.START_TOKEN)
-        bnc.insert(len(bnc), Sentence.END_TOKEN)
-        return bnc
+        return PTB2BNC(penn_treebank_tag(self.raw_sentence))
 
     def subsititue(self, i, length, correction: list[str]):
-        if i>0:
-            i=i-1
         list_of_str = word_tokenize(self.raw_sentence)
         for _ in range(length):
             list_of_str.pop(i)
