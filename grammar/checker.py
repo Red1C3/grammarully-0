@@ -29,6 +29,10 @@ class Checker:
             Rule(['w', 'w'], ['their', ('is', 'are')],
                  ({'const': 'there'}, {'idx': 1}))
         )  # 10
+        self.rules.append(
+            Rule(['p', 'w', 'w'], ['SENT_START', 'i', ('a', 'an')],
+                 ({'idx': 0}, {'idx': 1}, {'const': 'am'}))
+        )  # 11
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):
@@ -38,8 +42,8 @@ class Checker:
                 if i != -1:
                     made_changes = True
                     correct_window = rule.correct_window(sentence, i)
-                    sentence = Sentence(sentence.subsititue(
-                        i, rule.con_len, correct_window.raw_sentence))
+                    sentence.subsititue(
+                        i, rule.con_len, correct_window)
             if not (made_changes):
                 break
             elif verbose:

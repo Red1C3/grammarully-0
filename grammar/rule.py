@@ -60,7 +60,7 @@ class Rule:
                 correct.append(tagged[d['idx']][0])
             if 'const' in d:
                 correct.append(d['const'])
-        return Sentence(str.join(' ',correct))
+        return str.join(' ', correct)
 
     def __str__(self):
         return self.pattern_re_string(self.construct)+" : "+self.pattern_re_string(self.incorrect_pattern) + "-->" + str(self.correction_dict)

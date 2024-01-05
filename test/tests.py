@@ -9,7 +9,9 @@ _test_pairs = [
     ('no it is not to a certain extend', 'no it is not to a certain extent'),
     ('this is were i found my cat', 'this is where i found my cat'),
     ('do you have one ore more cats', 'do you have one or more cats'),
-    ('their are some cats here', 'there are some cats here')
+    ('their are some cats here', 'there are some cats here'),
+    ('i an a cat', 'i am a cat'),
+    ('i a a cat', 'i am a cat')
 ]
 
 
@@ -28,7 +30,7 @@ def run_tests(max_iterations=10):
 
 def _test(incorrect: str, correct: str, checker: Checker, max_iterations):
     checked = checker.check(Sentence(incorrect), False, max_iterations)
-    if checked.raw_sentence == correct:
+    if checked.raw_sentence == Sentence(correct).raw_sentence:
         return True
     else:
         return (checked.raw_sentence, correct)
