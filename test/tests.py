@@ -3,6 +3,13 @@ from language.sentence import Sentence
 
 _test_pairs = [
     ('the only on i can think of', 'the only one i can think of'),
+    ('i can give you more a detailed cat', 'i can give you a more detailed cat'),
+    ('some would think you a fortunate cat', 'some would think you are fortunate cat'),
+    ('yes it is to some extend', 'yes it is to some extent'),
+    ('no it is not to a certain extend', 'no it is not to a certain extent'),
+    ('this is were i found my cat', 'this is where i found my cat'),
+    ('do you have one ore more cats', 'do you have one or more cats'),
+    ('their are some cats here', 'there are some cats here')
 ]
 
 
