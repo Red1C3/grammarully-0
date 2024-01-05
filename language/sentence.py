@@ -1,5 +1,6 @@
 from tagger.PTB import penn_treebank_tag
 from tagger.BNC import PTB2BNC
+from tagger.CLAWS import claws_tag
 from nltk import word_tokenize
 
 class Sentence:
@@ -20,3 +21,6 @@ class Sentence:
             list_of_str.pop(i)
         list_of_str.insert(i, correction)
         self.raw_sentence = str.join(' ', list_of_str)
+   
+    #def get_claws_tag(self):
+        #claws_tag(self)
