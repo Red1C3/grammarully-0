@@ -4,7 +4,8 @@ from language.sentence import Sentence
 _test_pairs = [
     ('the only on i can think of', 'the only one i can think of'),
     ('i can give you more a detailed cat', 'i can give you a more detailed cat'),
-    ('some would think you a fortunate cat', 'some would think you are fortunate cat'),
+    ('some would think you a fortunate cat',
+     'some would think you are fortunate cat'),
     ('yes it is to some extend', 'yes it is to some extent'),
     ('no it is not to a certain extend', 'no it is not to a certain extent'),
     ('this is were i found my cat', 'this is where i found my cat'),
@@ -16,13 +17,15 @@ _test_pairs = [
     ('please not that we are cats now', 'please note that we are cats now'),
     ('i am nut sure if i am a cat', 'i am not sure if i am a cat'),
     ('i am nut certain if i am a cat', 'i am not certain if i am a cat'),
-    ('he went about being a cat and so one', 'he went about being a cat and so on'),
+    ('he went about being a cat and so one',
+     'he went about being a cat and so on'),
     ('i will through away the cat', 'i will throw away the cat'),  # He regrets it
     ('please not that you are nut sure if you are living in a simulation',
      'please note that you are not sure if you are living in a simulation'),
     ('or way that a cat', 'or was that a cat'),
     # ('thanks for the responds','thanks for the response') FIXME fails due to ambiguous tagging
-    ('the only thing i can think off is cats', 'the only thing i can think of is cats'),
+    ('the only thing i can think off is cats',
+     'the only thing i can think of is cats'),
     # ('please do not us the cat','please do not use the cat') FIXME fails due to PTB2BNC mapping, force tag negation to XX0 tag to fix
     # ('i use to use the cat','i used to use the cat') FIXME fails because PTB never tags lexical verbs as special lexical verbs
     ('i thing it is a good idea', 'i think it is a good idea'),
@@ -32,7 +35,9 @@ _test_pairs = [
     ('he has two cats not too dogs', 'he has two cats not two dogs'),
     ('we are not too far from home', 'we are not too far from home'),
     ('he has one cat not too', 'he has one cat not two'),
-    ('i think your confused about it', 'i think you are confused about it')
+    ('i think your confused about it', 'i think you are confused about it'),
+    ('he is less weirder then his cat', 'he is less weirder than his cat'),
+    ('he is more cat then his cat', 'he is more cat than his cat')
 ]
 
 

@@ -2,6 +2,7 @@ from grammar.rule import Rule
 from language.sentence import Sentence
 from pattern.text.en import PAST, PRESENT
 
+
 class Checker:
     def __init__(self, *args):
         if len(args) != 0:
@@ -89,6 +90,10 @@ class Checker:
             Rule(['w', 'p'], ['your', 'VVN'],
                  ({'const': 'you'}, {'const': 'are'}, {'idx': 1}))
         )  # 27
+        self.rules.append(
+            Rule(['w', 'p', 'w'], [('less', 'more'), ('AJ0', 'NN1', 'NN0'), 'then'],
+                 [{'idx': 0}, {'idx': 1}, {'const': 'than'}])
+        ) # 29
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):
