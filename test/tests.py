@@ -54,7 +54,11 @@ _test_pairs = [
     ('his cat is as large than mine', 'his cat is as large as mine'),
     ('his cat is as small then my cat', 'his cat is as small as my cat'),
     ('we can not run from the cat forever', 'we cannot run from the cat forever'),
-    ('i am not larger that you', 'i am not larger than you')
+    ('i am not larger that you', 'i am not larger than you'),
+    ('the tagger will return more then one tag',
+     'the tagger will return more than one tag'),  # true story
+    ('the tagger will return less as five tags',
+     'the tagger will return less than five tags')
 ]
 
 

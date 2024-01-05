@@ -140,6 +140,10 @@ class Checker:
             Rule(['w', 'w'], ['can', 'not'],
                  ({'const': 'cannot'},))
         )  # 48
+        self.rules.append(
+            Rule(['w','w'],[('more','less'),('then','as')],
+                 ({'idx':0},{'const':'than'}))
+        ) # 49
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):
