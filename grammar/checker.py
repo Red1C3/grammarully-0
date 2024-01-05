@@ -1,6 +1,6 @@
 from grammar.rule import Rule
 from language.sentence import Sentence
-from pattern.text.en import PAST, PRESENT, INFINITIVE
+from pattern.text.en import PAST, PRESENT, INFINITIVE, PARTICIPLE
 
 
 class Checker:
@@ -104,9 +104,9 @@ class Checker:
         )  # 31
         self.rules.append(
             Rule(['w', 'w', 'p'], ['eager', 'to', (
-            'VBB', 'VBD', 'VBG', 'VBN', 'VBZ', 'VDB', 'VDD', 'VDG', 'VDI', 'VDN', 'VDZ', 'VHB', 'VHD', 'VHG', 'VHI',
-            'VHN', 'VHZ', 'VM0', 'VVB', 'VVD', 'VVG', 'VVN', 'VVZ')],
-                 ({'idx': 0}, {'idx': 1}, {'idx': 2, 'tense': INFINITIVE}))
+                'VBB', 'VBD', 'VBG', 'VBN', 'VBZ', 'VDB', 'VDD', 'VDG', 'VDI', 'VDN', 'VDZ', 'VHB', 'VHD', 'VHG', 'VHI',
+                'VHN', 'VHZ', 'VM0', 'VVB', 'VVD', 'VVG', 'VVN', 'VVZ')],
+                ({'idx': 0}, {'idx': 1}, {'idx': 2, 'tense': INFINITIVE}))
         )  # 33
         self.rules.append(
             Rule(['w', 'p'], ['or', 'SENT_END'],
@@ -121,9 +121,13 @@ class Checker:
                  ({'const': 'it'}, {'idx': 1}))
         )  # 37
         self.rules.append(
-            Rule(['w','p'],['did',('VVD','VVG','VVN','VVZ')],
-                 ({'idx':0},{'idx':1,'tense':INFINITIVE}))
-        ) # 41
+            Rule(['w', 'p'], ['did', ('VVD', 'VVG', 'VVN', 'VVZ')],
+                 ({'idx': 0}, {'idx': 1, 'tense': INFINITIVE}))
+        )  # 41
+        self.rules.append(
+            Rule(['w', 'p'], [('is', 'was'), ('VVI', 'VVZ')],
+                 ({'idx': 0}, {'idx': 1, 'tense': PARTICIPLE})) #TODO check passing participle returns V3
+        )  # 44+45
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):

@@ -48,7 +48,8 @@ _test_pairs = [
      'this is the largest cat i have ever seen'),
     ('i think is should be a good cat', 'i think it should be a good cat'),
     ('i did visited the cat', 'i did visit the cat'),
-    ('i did went to the cat', 'i did go to the cat')
+    ('i did went to the cat', 'i did go to the cat'),
+    # ('he is go home', 'he is gone home') #FIXME fails because the tagger assumes go adjactive
 ]
 
 
