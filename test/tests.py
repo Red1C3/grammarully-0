@@ -60,7 +60,8 @@ _test_pairs = [
     ('the tagger will return less as five tags',
      'the tagger will return less than five tags'),
     ('this cat is larger then me', 'this cat is larger than me'),
-    ('this cat is smaller as me', 'this cat is smaller than me')
+    ('this cat is smaller as me', 'this cat is smaller than me'),
+    ('your gone','you are gone')
 ]
 
 
