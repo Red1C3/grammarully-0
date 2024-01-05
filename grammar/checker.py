@@ -116,6 +116,10 @@ class Checker:
             Rule(['w', 'p'], [('more', 'most'), 'AJS'],
                  ({'idx': 1},))
         )  # 36
+        self.rules.append(
+            Rule(['w', 'w'], ['is', ('should', 'could', 'would')],
+                 ({'const': 'it'}, {'idx': 1}))
+        )  # 37
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for _ in range(max_iterations):

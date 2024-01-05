@@ -44,7 +44,8 @@ _test_pairs = [
     ('i a eager to trying out dying', 'i am eager to try out dying'),
     ('should we eat or', 'should we eat'),
     # ('this is the most oldest cat here','this is the oldest cat here'), #FIXME the tagger is deciding it is an adj because it is after the most
-    ('this is the more largest cat i have ever seen', 'this is the largest cat i have ever seen')
+    ('this is the more largest cat i have ever seen', 'this is the largest cat i have ever seen'),
+    ('i think is should be a good cat', 'i think it should be a good cat')
 ]
 
 
