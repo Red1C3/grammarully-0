@@ -102,7 +102,7 @@ class Checker:
         )  # 29
         self.rules.append(
             Rule(['p', 'p'], ['AT0', 'AT0'],
-                 ({'idx': 0}))
+                 ({'idx': 0},))
         )  # 30
         self.rules.append(
             Rule(['w', 'p'], ['than', 'SENT_END'],
