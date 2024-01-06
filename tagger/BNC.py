@@ -1,5 +1,5 @@
 from pattern.text.en import INFINITIVE
-from pattern.en import conjugate
+from pattern.text.en import conjugate
 
 _ptb2bnc_map = {
     'CC': ['CJC'],
