@@ -33,6 +33,11 @@ class Rule:
             string.append(joined_group)
         return '^'+str.join(' ',string)+'$'
 
+    @staticmethod
+    def negative(*args):
+        string =  str.join("|",args)
+        return f'(?!{string}).*'
+
     def matched_windows(self, sentence: Sentence):
         tagged = sentence.get_bnc_tagged()
         matches = []

@@ -66,7 +66,13 @@ _test_pairs = [
     ('its the choice my cat made', 'it is the choice my cat made'),
     ('its going to be a cute cat', 'it is going to be a cute cat'),
     ('no is not the right time', 'now is not the right time'),
-    ('no you can not feed the cat', 'no you cannot feed the cat')
+    ('no you can not feed the cat', 'no you cannot feed the cat'),
+    ('of cause all cats are cute','of course all cats are cute'),
+    ('the study of cause and effect is fundamental to understanding cats','the study of cause and effect is fundamental to understanding cats'),
+    ('the principle of cause to effect is a cornerstone of understanding cats','the principle of cause to effect is a cornerstone of understanding cats'),
+    ('then he look after the cats', 'then he looks after the cats'),
+    ('will he look after the cats','will he look after the cats'),
+    ('should he pat the cats','should he pat the cats')
 ]
 
 

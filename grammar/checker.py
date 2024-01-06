@@ -109,6 +109,10 @@ class Checker:
                  ({'const': 'then'}, {'idx': 1}))
         )  # 31
         self.rules.append(
+            Rule(['w', 'w', 'w'], ['of', 'cause', Rule.negative('and','to')],
+                 ({'idx': 0}, {'const': 'course'}, {'idx': 2}))
+        )  # 32
+        self.rules.append(
             Rule(['w', 'w', 'p'], ['eager', 'to', (
                 'VBB', 'VBD', 'VBG', 'VBN', 'VBZ', 'VDB', 'VDD', 'VDG', 'VDI', 'VDN', 'VDZ', 'VHB', 'VHD', 'VHG', 'VHI',
                 'VHN', 'VHZ', 'VM0', 'VVB', 'VVD', 'VVG', 'VVN', 'VVZ')],
@@ -126,6 +130,10 @@ class Checker:
             Rule(['w', 'w'], ['is', ('should', 'could', 'would')],
                  ({'const': 'it'}, {'idx': 1}))
         )  # 37
+        self.rules.append(
+            Rule(['w','w','p'], [Rule.negative('has','will','must','could','can','should','would','does','did'), 'he', ('VVI','VVB')],
+                 ({'idx': 0}, {'idx': 1}, {'idx': 2,'tense': PRESENT, 'pronoun_idx': 1}))
+        )  # 40
         self.rules.append(
             Rule(['w', 'p'], ['did', ('VVD', 'VVG', 'VVN', 'VVZ')],
                  ({'idx': 0}, {'idx': 1, 'tense': INFINITIVE}))
