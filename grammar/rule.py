@@ -97,7 +97,7 @@ class Rule:
                 word = tagged[d['idx']][0]
                 if 'until_word' in d:
                     word = [word]
-                    until = d['until']
+                    until = d['until_word']
                     idx = d['idx'] + 1
                     while tagged[idx][0] != until:
                         word.append(tagged[idx][0])

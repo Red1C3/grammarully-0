@@ -80,6 +80,7 @@ _test_pairs = [
     # ('I will am a cat lover','I will be a cat lover'), #FIXME the tagger is deciding "am"" is an VVI
     ('she will was a cat lover','she will be a cat lover'), #FIXME the tagger is deciding "was"" is an VVD
     # ('she might looks for the cats','she might look for the cats'),  #FIXME the tagger is deciding "looks" is an VVI
+    ('does someone please please can can a can','can someone please please can a can'),
 ]
 
 
