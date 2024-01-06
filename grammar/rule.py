@@ -85,12 +85,12 @@ class Rule:
                 sub_tagged = [x[0] if self.construct[i] == 'w' else x[1][0] for i, x in enumerate(sub_tagged)]
                 sub_tagged_str = str.join(' ', sub_tagged)
                 if re.match(Rule.pattern_re_string(self.incorrect_pattern), sub_tagged_str):
-                    return i
-        return -1
+                    return i, len(sub_tagged)
+        return -1, 0
 
     #TODO handle case where cannot correct
-    def correct_window(self,sentence:Sentence,i:int):
-        tagged=sentence.get_bnc_tagged()[i:i+self.con_len]
+    def correct_window(self, sentence: Sentence, i: int, window_len: int):
+        tagged = sentence.get_bnc_tagged()[i:i + window_len]
         correct=[]
         for d in self.correction_dict:
             if 'idx' in d:
