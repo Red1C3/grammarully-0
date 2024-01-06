@@ -50,17 +50,17 @@ def PTB2BNC(penn_treebank_tagged_sentence):
             if inf_form == 'be':
                 word_tag = (word_tag[0], 'VB'+str(word_tag[1][2]))
                 # Replace the Penn Treebank tag with BNC's
-                bnc_sent.append((word_tag[0], word_tag[1]))
+                bnc_sent.append((word_tag[0], [word_tag[1]]))
                 continue
             elif inf_form == 'do':
                 word_tag = (word_tag[0], 'VD'+str(word_tag[1][2]))
                 # Replace the Penn Treebank tag with BNC's
-                bnc_sent.append((word_tag[0], word_tag[1]))
+                bnc_sent.append((word_tag[0], [word_tag[1]]))
                 continue
             elif inf_form == 'have':
                 word_tag = (word_tag[0], 'VH'+str(word_tag[1][2]))
                 # Replace the Penn Treebank tag with BNC's
-                bnc_sent.append((word_tag[0], word_tag[1]))
+                bnc_sent.append((word_tag[0], [word_tag[1]]))
                 continue
         # Replace the Penn Treebank tag with BNC's
         bnc_sent.append((word_tag[0], _ptb2bnc_map[word_tag[1]]))
