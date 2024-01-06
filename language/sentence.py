@@ -21,6 +21,9 @@ class Sentence:
             list_of_str.pop(i)
         list_of_str.insert(i, correction)
         self.raw_sentence = str.join(' ', list_of_str)
-   
+
+    def get_striped(self):
+        return self.raw_sentence[len(Sentence.START_TOKEN[0]) + 1:-len(Sentence.END_TOKEN[0]) - 1]
+
     #def get_claws_tag(self):
         #claws_tag(self)
