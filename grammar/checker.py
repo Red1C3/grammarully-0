@@ -117,7 +117,7 @@ class Checker:
                  ({'const': 'then'}, {'idx': 1}))
         )  # 31
         self.rules.append(
-            Rule(['w', 'w', 'w'], ['of', 'cause', Rule.negative('and','to')],
+            Rule(['w', 'w', 'w'], ['of', 'cause', Rule.negative('and', 'to')],
                  ({'idx': 0}, {'const': 'course'}, {'idx': 2}))
         )  # 32
         self.rules.append(
@@ -139,16 +139,16 @@ class Checker:
                  ({'const': 'it'}, {'idx': 1}))
         )  # 37
         self.rules.append(
-            Rule(['w','w','p'], [Rule.negative('has','will','must','could','can','should','would','does','did'), 'he', ('VVI','VVB')],
-                 ({'idx': 0}, {'idx': 1}, {'idx': 2,'tense': PRESENT, 'pronoun_idx': 1}))
+            Rule(['w', 'w', 'p'], [Rule.negative('has', 'will', 'must', 'could', 'can', 'should', 'would', 'does', 'did'), 'he', ('VVI', 'VVB')],
+                 ({'idx': 0}, {'idx': 1}, {'idx': 2, 'tense': PRESENT, 'pronoun_idx': 1}))
         )  # 40
         self.rules.append(
             Rule(['w', 'p'], ['did', ('VVD', 'VVG', 'VVN', 'VVZ')],
                  ({'idx': 0}, {'idx': 1, 'tense': INFINITIVE}))
         )  # 41
         self.rules.append(
-            Rule(['p','p','p'], [Rule.negative('DT0'), 'VM0', ('VVD','VVG','VVN','VVZ')],
-                 ({'idx': 0}, {'idx': 1}, {'idx': 2,'tense': INFINITIVE}))
+            Rule(['p', 'p', 'p'], [Rule.negative('DT0'), 'VM0', ('VVD', 'VVG', 'VVN', 'VVZ')],
+                 ({'idx': 0}, {'idx': 1}, {'idx': 2, 'tense': INFINITIVE}))
         )  # 42
         self.rules.append(
             Rule(['w', 'p'], [('is', 'was'), ('VVI', 'VVZ')],
@@ -186,18 +186,26 @@ class Checker:
             Rule(['w', 'w'], ['no', ('were', 'was', 'been', 'be', 'is')],
                  ({'const': 'now'}, {'idx': 1}))
         )  # 56
+        self.rules.append(
+            Rule(['w', 'b', 'w'], [('does', 'do', 'did'), '.*', 'can'],
+                 ({'idx': -1}, {'idx': 1, 'until_word': 'can'}))
+        )  # 3
+        self.rules.append(
+            Rule(['w', 'p'], [('a', 'an', 'one'), 'NN2'],
+                 ({'const': 'the'}, {'idx': 1}))
+        )  # 1
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for j in range(max_iterations):
             made_changes = False
             for rule in self.rules:
-                i = rule.first_matched_window(sentence)
+                i, win_len = rule.first_matched_window(sentence)
                 if i != -1:
                     made_changes = True
-                    sentence.problems.append([j,rule])
-                    correct_window = rule.correct_window(sentence, i)
+                    sentence.problems.append([j, rule])
+                    correct_window = rule.correct_window(sentence, i, win_len)
                     sentence.subsititue(
-                        i, rule.con_len, correct_window)
+                        i, win_len, correct_window)
             if not (made_changes):
                 break
             elif verbose:

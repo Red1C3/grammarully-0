@@ -67,9 +67,11 @@ _test_pairs = [
     ('its going to be a cute cat', 'it is going to be a cute cat'),
     ('no is not the right time', 'now is not the right time'),
     ('no you can not feed the cat', 'no you cannot feed the cat'),
-    ('of cause all cats are cute','of course all cats are cute'),
-    ('the study of cause and effect is fundamental to understanding cats','the study of cause and effect is fundamental to understanding cats'),
-    ('the principle of cause to effect is a cornerstone of understanding cats','the principle of cause to effect is a cornerstone of understanding cats'),
+    ('of cause all cats are cute', 'of course all cats are cute'),
+    ('the study of cause and effect is fundamental to understanding cats',
+     'the study of cause and effect is fundamental to understanding cats'),
+    ('the principle of cause to effect is a cornerstone of understanding cats',
+     'the principle of cause to effect is a cornerstone of understanding cats'),
     ('then he look after the cats', 'then he looks after the cats'),
     ('will he look after the cats','will he look after the cats'),
     ('should he pat the cats','should he pat the cats'),
@@ -80,6 +82,9 @@ _test_pairs = [
     # ('I will am a cat lover','I will be a cat lover'), #FIXME the tagger is deciding "am"" is an VVI
     # ('she will was a cat lover','she will be a cat lover'), #FIXME the tagger is deciding "was"" is an VVD
     ('she might looks for the cats','she might look for the cats'),  #FIXME the tagger is deciding "looks" is an VVI
+    ('does someone please please can can a can',
+     'can someone please please can a can'),
+    ('we are a cats', 'we are the cats'),
 ]
 
 
@@ -94,7 +99,7 @@ def run_tests(max_iterations=10):
             print(res[0])
             print('Used rules:')
             for rule in res[2]:
-                print('index:',rule[0],'| Rule:',rule[1])
+                print('index:', rule[0], '| Rule:', rule[1])
             print('='*20)
     print('FINISHED TESTING')
 
@@ -105,4 +110,4 @@ def _test(incorrect: str, correct: str, checker: Checker, max_iterations):
     if checked.raw_sentence == Sentence(correct).raw_sentence:
         return True
     else:
-        return (checked.raw_sentence, correct,incorrect_sent.problems)
+        return (checked.raw_sentence, correct, incorrect_sent.problems)
