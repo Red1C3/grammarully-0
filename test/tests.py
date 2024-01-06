@@ -72,7 +72,14 @@ _test_pairs = [
     ('the principle of cause to effect is a cornerstone of understanding cats','the principle of cause to effect is a cornerstone of understanding cats'),
     ('then he look after the cats', 'then he looks after the cats'),
     ('will he look after the cats','will he look after the cats'),
-    ('should he pat the cats','should he pat the cats')
+    ('should he pat the cats','should he pat the cats'),
+    ('John will see the cats','John will see the cats'),
+    ('I will feed the cats','I will feed the cats'),
+    # ('John might forgets to feed the cats','John might forget to feed the cats'), #FIXME the tagger is deciding "forgets" is an VVI
+    ('John will was a cat lover','John will be a cat lover'), #FIXME the tagger is deciding "was"" is an VVD
+    # ('I will am a cat lover','I will be a cat lover'), #FIXME the tagger is deciding "am"" is an VVI
+    ('she will was a cat lover','she will be a cat lover'), #FIXME the tagger is deciding "was"" is an VVD
+    # ('she might looks for the cats','she might look for the cats'),  #FIXME the tagger is deciding "looks" is an VVI
 ]
 
 

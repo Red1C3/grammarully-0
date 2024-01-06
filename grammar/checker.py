@@ -147,6 +147,10 @@ class Checker:
                  ({'idx': 0}, {'idx': 1, 'tense': INFINITIVE}))
         )  # 41
         self.rules.append(
+            Rule(['p','p','p'], [Rule.negative('DT0'), 'VM0', ('VVD','VVG','VVN','VVZ')],
+                 ({'idx': 0}, {'idx': 1}, {'idx': 2,'tense': INFINITIVE}))
+        )  # 42
+        self.rules.append(
             Rule(['w', 'p'], [('is', 'was'), ('VVI', 'VVZ')],
                  # TODO check passing participle returns V3
                  ({'idx': 0}, {'idx': 1, 'tense': PARTICIPLE}))
