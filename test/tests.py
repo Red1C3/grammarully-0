@@ -23,7 +23,7 @@ _test_pairs = [
     ('please not that you are nut sure if you are living in a simulation',
      'please note that you are not sure if you are living in a simulation'),
     ('or way that a cat', 'or was that a cat'),
-    # ('thanks for the responds','thanks for the response'), #FIXME fails due to ambiguous tagging
+    ('thanks for the responds', 'thanks for the response'),
     ('the only thing i can think off is cats',
      'the only thing i can think of is cats'),
     # ('please do not us the cat','please do not use the cat'), #FIXME fails due to PTB2BNC mapping, force tag negation to XX0 tag to fix
@@ -38,7 +38,7 @@ _test_pairs = [
     # ('i think your confused about it', 'i think you are confused about it'),
     # ('he is less weirder then his cat', 'he is less weirder than his cat'),
     ('he is more cat then his cat', 'he is more cat than his cat'),
-    # ('the the cat is nice', 'the cat is nice'), #FIXME fails due to POS ambiguety
+    ('the the cat is nice', 'the cat is nice'),
     ('what do you mean than', 'what do you mean then'),
     ('i am eager to trying out dying', 'i am eager to try out dying'),
     ('i a eager to trying out dying', 'i am eager to try out dying'),
