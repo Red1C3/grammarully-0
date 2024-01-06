@@ -12,18 +12,26 @@ class Checker:
         self.initRules()
 
     def initRules(self):
-        self.rules.append(Rule(['w', 'w', 'p'], ["more", ("a", "an"), 'AJ0'], ({
-                          'idx': 1}, {'idx': 0}, {'idx': 2})))  # 4
-        self.rules.append(Rule(['w', 'w', 'w'], ['think', 'you', ('a', 'an')], ({
-                          'idx': 0}, {'idx': 1}, {'const': 'are'})))  # 5
-        self.rules.append(Rule(['w', 'w'], [('some', 'certain'), 'extend'], ({
-                          'idx': 0}, {'const': 'extent'})))  # 6
         self.rules.append(
-            # 7
-            Rule(['w', 'w'], ['is', 'were'], ({'idx': 0}, {'const': 'where'})))
+            Rule(['w', 'w', 'p'], ["more", ("a", "an"), 'AJ0'],
+                 ({'idx': 1}, {'idx': 0}, {'idx': 2}))
+        )  # 4
         self.rules.append(
-            # 8
-            Rule(['p', 'w'], ['CRD', 'ore'], ({'idx': 0}, {'const': 'or'})))
+            Rule(['w', 'w', 'w'], ['think', 'you', ('a', 'an')],
+                 ({'idx': 0}, {'idx': 1}, {'const': 'are'}))
+        )  # 5
+        self.rules.append(
+            Rule(['w', 'w'], [('some', 'certain'), 'extend'],
+                 ({'idx': 0}, {'const': 'extent'}))
+        )  # 6
+        self.rules.append(
+            Rule(['w', 'w'], ['is', 'were'],
+                 ({'idx': 0}, {'const': 'where'}))
+        )  # 7
+        self.rules.append(
+            Rule(['p', 'w'], ['CRD', 'ore'],
+                 ({'idx': 0}, {'const': 'or'}))
+        )  # 8
         self.rules.append(
             Rule(['w', 'w', 'w'], ['the', 'only', 'on'],
                  ({'idx': 0}, {'idx': 1}, {'const': 'one'}))
