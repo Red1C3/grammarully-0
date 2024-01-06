@@ -199,11 +199,11 @@ class Checker:
         for j in range(max_iterations):
             made_changes = False
             for rule in self.rules:
-                i, win_len = rule.first_matched_window(sentence)
+                i, win_len, possibility = rule.first_matched_window(sentence)
                 if i != -1:
                     made_changes = True
                     sentence.problems.append([j, rule])
-                    correct_window = rule.correct_window(sentence, i, win_len)
+                    correct_window = rule.correct_window(sentence, i, win_len, possibility)
                     sentence.subsititue(
                         i, win_len, correct_window)
             if not (made_changes):
