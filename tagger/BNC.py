@@ -52,6 +52,8 @@ def PTB2BNC(penn_treebank_tagged_sentence):
 
 def enhance_treebank_tag(word, tbt):
     tags = [tbt]
+    if word =='not':
+        return ['XX0']
     if 'VB' in tbt:
         inf_form = conjugate(verb=word, tense=INFINITIVE)
         if inf_form == 'be':
