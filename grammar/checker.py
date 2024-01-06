@@ -186,6 +186,10 @@ class Checker:
             Rule(['w', 'w'], ['no', ('were', 'was', 'been', 'be', 'is')],
                  ({'const': 'now'}, {'idx': 1}))
         )  # 56
+        self.rules.append(
+            Rule(['w', 'b', 'w'], [('does', 'do', 'did'), '.*', 'can'],
+                 ({'idx': -1}, {'idx': 1, 'until': 'can'}))
+        )
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for j in range(max_iterations):

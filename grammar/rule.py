@@ -95,6 +95,15 @@ class Rule:
         for d in self.correction_dict:
             if 'idx' in d:
                 word = tagged[d['idx']][0]
+                if 'until_word' in d:
+                    word = [word]
+                    until = d['until']
+                    idx = d['idx'] + 1
+                    while tagged[idx][0] != until:
+                        word.append(tagged[idx][0])
+                        idx += 1
+                    word = str.join(' ', word)
+
             if 'const' in d:
                 word = d['const']
             if 'pronoun_idx' in d and 'tense' in d:
