@@ -53,13 +53,39 @@ class Rule:
     def first_matched_window(self,sentence:Sentence):
         tagged = sentence.get_bnc_tagged()
         con_len = len(self.construct)
-        for i in range(len(tagged) - con_len + 1):
-            sub_tagged = tagged[i:con_len + i]
-            # TODO take all possible POS tags into account
-            sub_tagged = [x[0] if self.construct[i] == 'w' else x[1][0] for i, x in enumerate(sub_tagged)]
-            sub_tagged_str = str.join(' ', sub_tagged)
-            if re.match(Rule.pattern_re_string(self.incorrect_pattern), sub_tagged_str):
-                return i
+        if 'b' in self.construct:
+            for i in range(len(tagged)):
+                cur_const = 0
+                sub_tagged = tagged[i:]
+                baked_sub_tagged = []
+                for comp in sub_tagged:
+                    if cur_const == len(self.construct):
+                        baked_sub_tagged_str = str.join(' ', baked_sub_tagged)
+                        if re.match(Rule.pattern_re_string(self.incorrect_pattern), baked_sub_tagged_str):
+                            return i, len(baked_sub_tagged)
+                        else:
+                            break
+                    if self.construct[cur_const] == 'w':
+                        baked_sub_tagged.append(comp[0])
+                        cur_const += 1
+                    elif self.construct[cur_const] == 'p':
+                        baked_sub_tagged.append(comp[1][0])
+                        cur_const += 1
+                    elif self.construct[cur_const] == 'b':
+                        baked_sub_tagged.append(comp[0])
+                        lookup_const = self.incorrect_pattern[cur_const + 1]
+                        if (self.construct[cur_const + 1] == 'w' and lookup_const == comp[0]) or \
+                                (self.construct[cur_const + 1] == 'p' and lookup_const == comp[1][0]):
+                            cur_const += 2
+
+        else:
+            for i in range(len(tagged) - con_len + 1):
+                sub_tagged = tagged[i:con_len + i]
+                # TODO take all possible POS tags into account
+                sub_tagged = [x[0] if self.construct[i] == 'w' else x[1][0] for i, x in enumerate(sub_tagged)]
+                sub_tagged_str = str.join(' ', sub_tagged)
+                if re.match(Rule.pattern_re_string(self.incorrect_pattern), sub_tagged_str):
+                    return i
         return -1
 
     #TODO handle case where cannot correct
