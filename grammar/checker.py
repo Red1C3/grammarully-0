@@ -190,6 +190,10 @@ class Checker:
             Rule(['w', 'b', 'w'], [('does', 'do', 'did'), '.*', 'can'],
                  ({'idx': -1}, {'idx': 1, 'until_word': 'can'}))
         )  # 3
+        self.rules.append(
+            Rule(['w', 'p'], [('a', 'an', 'one'), 'NN2'],
+                 ({'const': 'the'}, {'idx': 1}))
+        )  # 1
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for j in range(max_iterations):
