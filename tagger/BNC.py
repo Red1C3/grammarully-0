@@ -1,5 +1,6 @@
 from pattern.text.en import INFINITIVE
 from pattern.text.en import conjugate
+from itertools import chain
 
 _ptb2bnc_map = {
     'CC': ['CJC'],
@@ -27,7 +28,7 @@ _ptb2bnc_map = {
     'RP': ['AVP'],
     'TO': ['TO0'],
     'UH': ['UNC'],
-    'VBB': ['VVI'],
+    'VB': ['VVI'],
     'VBD': ['VVD'],
     'VBG': ['VVG'],
     'VBN': ['VVN'],
@@ -43,25 +44,20 @@ _ptb2bnc_map = {
 def PTB2BNC(penn_treebank_tagged_sentence):
     bnc_sent = []
     for word_tag in penn_treebank_tagged_sentence:
-        if 'VB' in word_tag[1]:
-            if 'VB' == word_tag[1]:
-                word_tag = (word_tag[0], 'VBB')
-            inf_form = conjugate(verb=word_tag[0], tense=INFINITIVE)
-            if inf_form == 'be':
-                word_tag = (word_tag[0], 'VB'+str(word_tag[1][2]))
-                # Replace the Penn Treebank tag with BNC's
-                bnc_sent.append((word_tag[0], [word_tag[1]]))
-                continue
-            elif inf_form == 'do':
-                word_tag = (word_tag[0], 'VD'+str(word_tag[1][2]))
-                # Replace the Penn Treebank tag with BNC's
-                bnc_sent.append((word_tag[0], [word_tag[1]]))
-                continue
-            elif inf_form == 'have':
-                word_tag = (word_tag[0], 'VH'+str(word_tag[1][2]))
-                # Replace the Penn Treebank tag with BNC's
-                bnc_sent.append((word_tag[0], [word_tag[1]]))
-                continue
+        tags = enhance_treebank_tag(word_tag[0], word_tag[1])
         # Replace the Penn Treebank tag with BNC's
-        bnc_sent.append((word_tag[0], _ptb2bnc_map[word_tag[1]]))
+        bnc_sent.append((word_tag[0], list(chain(*[_ptb2bnc_map.get(x, [x]) for x in tags]))))
     return bnc_sent
+
+
+def enhance_treebank_tag(word, tbt):
+    tags = [tbt]
+    if 'VB' in tbt:
+        inf_form = conjugate(verb=word, tense=INFINITIVE)
+        if inf_form == 'be':
+            tags.append('VB' + (str(tags[0][2]) if len(tbt) == 3 else 'B'))
+        elif inf_form == 'do':
+            tags.append('VD' + (str(tags[0][2]) if len(tbt) == 3 else 'B'))
+        elif inf_form == 'have':
+            tags.append('VH' + (str(tags[0][2]) if len(tbt) == 3 else 'B'))
+    return tags
