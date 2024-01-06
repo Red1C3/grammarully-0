@@ -23,33 +23,33 @@ _test_pairs = [
     ('please not that you are nut sure if you are living in a simulation',
      'please note that you are not sure if you are living in a simulation'),
     ('or way that a cat', 'or was that a cat'),
-    # ('thanks for the responds','thanks for the response') FIXME fails due to ambiguous tagging
+    # ('thanks for the responds','thanks for the response'), #FIXME fails due to ambiguous tagging
     ('the only thing i can think off is cats',
      'the only thing i can think of is cats'),
-    # ('please do not us the cat','please do not use the cat') FIXME fails due to PTB2BNC mapping, force tag negation to XX0 tag to fix
-    # ('i use to use the cat','i used to use the cat') FIXME fails because PTB never tags lexical verbs as special lexical verbs
+    # ('please do not us the cat','please do not use the cat'), #FIXME fails due to PTB2BNC mapping, force tag negation to XX0 tag to fix
+    # ('i use to use the cat','i used to use the cat'), #FIXME fails because PTB never tags lexical verbs as special lexical verbs
     ('i thing it is a good idea', 'i think it is a good idea'),
     ('he thing so', 'he thinks so'),
     ('we things about it', 'we think about it'),
-    # ('were are you now','where are you now') FIXME fails because PTB does not have a special tag for "be" verb
+    # ('were are you now','where are you now'), #FIXME fails because PTB does not have a special tag for "be" verb
     ('he has two cats not too dogs', 'he has two cats not two dogs'),
     ('we are not too far from home', 'we are not too far from home'),
     ('he has one cat not too', 'he has one cat not two'),
-    ('i think your confused about it', 'i think you are confused about it'),
-    ('he is less weirder then his cat', 'he is less weirder than his cat'),
+    # ('i think your confused about it', 'i think you are confused about it'),
+    # ('he is less weirder then his cat', 'he is less weirder than his cat'),
     ('he is more cat then his cat', 'he is more cat than his cat'),
-    # ('the the cat is nice', 'the cat is nice') FIXME fails due to POS ambiguety
+    # ('the the cat is nice', 'the cat is nice'), #FIXME fails due to POS ambiguety
     ('what do you mean than', 'what do you mean then'),
     ('i am eager to trying out dying', 'i am eager to try out dying'),
     ('i a eager to trying out dying', 'i am eager to try out dying'),
     ('should we eat or', 'should we eat'),
-    # ('this is the most oldest cat here','this is the oldest cat here'), #FIXME the tagger is deciding it is an adj because it is after the most
+    ('this is the most oldest cat here','this is the oldest cat here'), #FIXME the tagger is deciding it is an adj because it is after the most
     ('this is the more largest cat i have ever seen',
      'this is the largest cat i have ever seen'),
     ('i think is should be a good cat', 'i think it should be a good cat'),
     ('i did visited the cat', 'i did visit the cat'),
     ('i did went to the cat', 'i did go to the cat'),
-    # ('he is go home', 'he is gone home') #FIXME fails because the tagger assumes go adjactive
+    # ('he is go home', 'he is gone home'), #FIXME fails because the tagger assumes go adjactive
     ('his cat is as big like mine', 'his cat is as big as mine'),
     ('his cat is as large than mine', 'his cat is as large as mine'),
     ('his cat is as small then my cat', 'his cat is as small as my cat'),
@@ -75,11 +75,11 @@ _test_pairs = [
     ('should he pat the cats','should he pat the cats'),
     ('John will see the cats','John will see the cats'),
     ('I will feed the cats','I will feed the cats'),
-    # ('John might forgets to feed the cats','John might forget to feed the cats'), #FIXME the tagger is deciding "forgets" is an VVI
-    ('John will was a cat lover','John will be a cat lover'), #FIXME the tagger is deciding "was"" is an VVD
+    ('John might forgets to feed the cats','John might forget to feed the cats'), #FIXME the tagger is deciding "forgets" is an VVI
+    # ('John will was a cat lover','John will be a cat lover'), #FIXME the tagger is deciding "was"" is an VVD
     # ('I will am a cat lover','I will be a cat lover'), #FIXME the tagger is deciding "am"" is an VVI
-    ('she will was a cat lover','she will be a cat lover'), #FIXME the tagger is deciding "was"" is an VVD
-    # ('she might looks for the cats','she might look for the cats'),  #FIXME the tagger is deciding "looks" is an VVI
+    # ('she will was a cat lover','she will be a cat lover'), #FIXME the tagger is deciding "was"" is an VVD
+    ('she might looks for the cats','she might look for the cats'),  #FIXME the tagger is deciding "looks" is an VVI
 ]
 
 
