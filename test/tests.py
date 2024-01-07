@@ -100,6 +100,8 @@ _test_pairs = [
     ('I seen cats daily', 'I see cats daily'),
     ('he can seen the cats', 'he can see the cats'),
     ('the cat might ate her food', 'the cat might eat her food'),
+    ('please type in the from your cat hobbies', 'please type in the form your cat hobbies'),
+    ('please type in a from your cats names', 'please type in a form your cats names'),
 ]
 
 

@@ -177,6 +177,10 @@ class Checker:
                  ({'idx': 0}, {'idx': 1}, {'const': 'as'}))
         )  # 46
         self.rules.append(
+            Rule(['p', 'w'], [('AT0', 'DT0'), 'from'],
+                 ({'idx': 0}, {'const': 'form'}))
+        )  # 47
+        self.rules.append(
             Rule(['w', 'w'], ['can', 'not'],
                  ({'const': 'cannot'},))
         )  # 48
