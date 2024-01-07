@@ -47,34 +47,39 @@ _possive_determinators=[
 def PTB2BNC(penn_treebank_tagged_sentence):
     bnc_sent = []
     for word_tag in penn_treebank_tagged_sentence:
-        tags = enhance_treebank_tag(word_tag[0], word_tag[1])
-        # Replace the Penn Treebank tag with BNC's
-        bnc_sent.append((word_tag[0], list(chain(*[_ptb2bnc_map.get(x, [x]) for x in tags]))))
+        mapped_tags = _ptb2bnc_map[word_tag[1]]
+        tags, merge = enhance_treebank_tag(word_tag[0], word_tag[1])
+        if len(tags) > 0:
+            if merge:
+                mapped_tags = list(chain(mapped_tags, tags))
+            else:
+                mapped_tags = tags
+        bnc_sent.append((word_tag[0], mapped_tags))
     return bnc_sent
 
 
 def enhance_treebank_tag(word, tbt):
-    tags = [tbt]
+    tags = []
     if word in _possive_determinators:
         tags.append('DPS')
     if word =='not':
-        return ['XX0']
+        return ['XX0'], False
     if 'VB' in tbt:
         inf_form = conjugate(verb=word, tense=INFINITIVE)
         if inf_form == 'be':
-            tags.append('VB' + (str(tags[0][2]) if len(tbt) == 3 else 'B'))
+            tags.append('VB' + (str(tbt[2]) if len(tbt) == 3 else 'B'))
         elif inf_form == 'do':
-            tags.append('VD' + (str(tags[0][2]) if len(tbt) == 3 else 'B'))
+            tags.append('VD' + (str(tbt[2]) if len(tbt) == 3 else 'B'))
         elif inf_form == 'have':
-            tags.append('VH' + (str(tags[0][2]) if len(tbt) == 3 else 'B'))
+            tags.append('VH' + (str(tbt[2]) if len(tbt) == 3 else 'B'))
         # This has increased the complexity A LOT
         # else:
         #     v_tenses=tenses(word,parse=False)
         #     if len(v_tenses)==1:
-        #         return tense_to_tag(v_tenses[0])
+        #         return tense_to_tag(v_tenses[0]),False
         #     for v_t in v_tenses:
-        #         tags.extend(tense_to_tag(v_t))
-    return tags
+        #         tags=list(chain(tags,tense_to_tag(v_t)))
+    return tags, True
 
 
 def tense_to_tag(tense_tuple):
