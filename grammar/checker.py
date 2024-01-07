@@ -199,9 +199,13 @@ class Checker:
                  ({'idx': 0}, {'idx': 1, 'tense': PRESENT, 'number': PLURAL}))
         )  # C1: plural names should not be followed by 3rd singular present
         self.rules.append(
-            Rule(['p', 'w', 'p'], [('NN.','PNP','NP0'),('always','often','usually', 'regularly', 'every', 'daily','seldom','normally','generally','sometimes','rarely'), 'VV.'],
+            Rule(['p', 'w', 'p'], [('NN.','PNP','NP0'),('always','often','usually', 'regularly', 'every.*', 'daily','seldom','normally','generally','sometimes','rarely'), 'VV.'],
                  ({'idx': 0}, {'idx': 1}, {'idx':2 ,'tense': PRESENT, 'pronoun_idx': 0}))
         )  # Present Simple 1
+        self.rules.append(
+            Rule(['p', 'p', 'b', 'w'], [('NN.','PNP','NP0'), 'VV.','.*',('always','often','usually', 'regularly', 'every.*', 'daily','seldom','normally','generally','sometimes','rarely')],
+                 ({'idx': 0}, {'idx':1 ,'tense': PRESENT, 'pronoun_idx': 0}, {'idx': 2,'until_word':3},{'idx':-1}))
+        )  # Present Simple 2
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for j in range(max_iterations):
