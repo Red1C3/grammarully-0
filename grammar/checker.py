@@ -139,7 +139,7 @@ class Checker:
                  ({'const': 'it'}, {'idx': 1}))
         )  # 37
         self.rules.append(
-            Rule(['w', 'w', 'p'], [Rule.negative('has', 'will', 'must', 'could', 'can', 'should', 'would', 'does', 'did'), 'he', ('VVI', 'VVB')],
+            Rule(['w', 'w', 'p'], [Rule.negative('has', 'will', 'must', 'could', 'can', 'should', 'would', 'does', 'did'), ('he','she','it'), ('VVI', 'VVB')],
                  ({'idx': 0}, {'idx': 1}, {'idx': 2, 'tense': PRESENT, 'pronoun_idx': 1}))
         )  # 40
         self.rules.append(
