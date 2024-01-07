@@ -220,6 +220,10 @@ class Checker:
                  ({'idx': 0}, {'idx': 1, 'tense': PRESENT, 'number': PLURAL}))
         )  # C1: plural names should not be followed by 3rd singular present
         self.rules.append(
+            Rule(['w', 'p'], [('i', 'we', 'they', 'you'), 'V.Z'],
+                 ({'idx': 0}, {'idx': 1, 'tense': PRESENT, 'pronoun_idx': 0}))
+        )  # C2: 1st and 2nd person pronouns must not be followed by 3rd person verbs
+        self.rules.append(
             Rule(['p', 'w', 'p'], [('NN.','PNP','NP0'),present_simple_kw, 'VV.'],
                  ({'idx': 0}, {'idx': 1}, {'idx':2 ,'tense': PRESENT, 'pronoun_idx': 0}))
         )  # Present Simple 1
