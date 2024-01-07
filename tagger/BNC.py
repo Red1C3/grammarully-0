@@ -74,27 +74,22 @@ def enhance_treebank_tag(word, tbt):
             tags.append('VH' + (str(tbt[2]) if len(tbt) == 3 else 'B'))
         # This has increased the complexity A LOT
         # else:
-        #     v_tenses=tenses(word,parse=False)
+        #     v_tenses=tenses(word)
         #     if len(v_tenses)==1:
         #         return tense_to_tag(v_tenses[0]),False
-        #     for v_t in v_tenses:
-        #         tags=list(chain(tags,tense_to_tag(v_t)))
+        #     tags=list(set(chain(*tags,*map(tense_to_tag,v_tenses))))
     return tags, True
 
-
 def tense_to_tag(tense_tuple):
-    t = tense_tuple[0]
-    person = tense_tuple[1]
-    aspect = tense_tuple[3]
-    if t == INFINITIVE:
+    if INFINITIVE in tense_tuple:
         return ['VVI']
-    if t == PRESENT:
-        if aspect == PROGRESSIVE:
+    if PRESENT in tense_tuple:
+        if PROGRESSIVE in tense_tuple:
             return ['VVG']
-        if person == 3:
+        if 3 in tense_tuple:
             return ['VVZ']
         return ['VVB', 'VVI']
-    if t == PAST:
-        if aspect == PROGRESSIVE:
+    if PAST in tense_tuple:
+        if PROGRESSIVE in tense_tuple:
             return ['VVN']
         return ['VVD']
