@@ -40,6 +40,9 @@ _ptb2bnc_map = {
     'WRB': ['AVQ']
 }
 
+_possive_determinators=[
+    'my','your','his','her','its','their','our'
+]
 
 def PTB2BNC(penn_treebank_tagged_sentence):
     bnc_sent = []
@@ -52,6 +55,8 @@ def PTB2BNC(penn_treebank_tagged_sentence):
 
 def enhance_treebank_tag(word, tbt):
     tags = [tbt]
+    if word in _possive_determinators:
+        tags.append('DPS')
     if word =='not':
         return ['XX0']
     if 'VB' in tbt:

@@ -93,6 +93,10 @@ class Checker:
                  ({'const', 'where'}, {'idx': 1}))
         )  # 23
         self.rules.append(
+            Rule(['w','p'],['fore','DPS'],
+                 ({'const':'for'},{'idx':1}))
+        )# 25
+        self.rules.append(
             Rule(['w', 'w', 'p'], ['not', 'too', ('SENT_END', 'NN0', 'NN1', 'NN2')],
                  ({'idx': 0}, {'const': 'two'}, {'idx': 2}))
         )  # 26

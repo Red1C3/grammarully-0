@@ -89,6 +89,7 @@ _test_pairs = [
     ('Mike always went to feed cats', 'Mike always goes to feed cats'),
     ('He often go to feed cats', 'He often goes to feed cats'),
     ('i never go to kick cats', 'i never go to kick cats'),
+    ('thank the cat fore her patience','thank the cat for her patience')
 ]
 
 
