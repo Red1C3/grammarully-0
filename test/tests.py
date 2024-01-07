@@ -85,10 +85,11 @@ _test_pairs = [
     ('does someone please please can can a can',
      'can someone please please can a can'),
     ('we are a cats', 'we are the cats'),
+    # ('the cats likes you','the cats like you'), #FIXME not working due to the tagger tagging likes VVI, works when heavy verbs conjugator is on
 ]
 
 
-def run_tests(max_iterations=10):
+def run_tests(max_iterations=10, verbose=False):
     c = Checker()
     for t in _test_pairs:
         res = _test(t[0], t[1], c, max_iterations)
@@ -101,6 +102,8 @@ def run_tests(max_iterations=10):
             for rule in res[2]:
                 print('index:', rule[0], '| Rule:', rule[1])
             print('='*20)
+        elif verbose:
+            print('TEST PASSED')
     print('FINISHED TESTING')
 
 

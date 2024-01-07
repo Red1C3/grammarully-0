@@ -1,7 +1,7 @@
 from grammar.rule import Rule
 from language.sentence import Sentence
 from pattern.text.en import PAST, PRESENT, INFINITIVE, PARTICIPLE
-
+from pattern.text.en import PLURAL
 
 class Checker:
     def __init__(self, *args):
@@ -194,6 +194,10 @@ class Checker:
             Rule(['w', 'p'], [('a', 'an', 'one'), 'NN2'],
                  ({'const': 'the'}, {'idx': 1}))
         )  # 1
+        self.rules.append(
+            Rule(['p', 'p'], ['NN2', 'V.Z'],
+                 ({'idx': 0}, {'idx': 1, 'tense': PRESENT, 'number': PLURAL}))
+        )  # C1: plural names should not be followed by 3rd singular present
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for j in range(max_iterations):

@@ -1,5 +1,5 @@
-from pattern.text.en import INFINITIVE
-from pattern.text.en import conjugate
+from pattern.text.en import INFINITIVE, PAST, PRESENT, PROGRESSIVE
+from pattern.text.en import conjugate, tenses
 from itertools import chain
 
 _ptb2bnc_map = {
@@ -62,4 +62,29 @@ def enhance_treebank_tag(word, tbt):
             tags.append('VD' + (str(tags[0][2]) if len(tbt) == 3 else 'B'))
         elif inf_form == 'have':
             tags.append('VH' + (str(tags[0][2]) if len(tbt) == 3 else 'B'))
+        # This has increased the complexity A LOT
+        # else:
+        #     v_tenses=tenses(word,parse=False)
+        #     if len(v_tenses)==1:
+        #         return tense_to_tag(v_tenses[0])
+        #     for v_t in v_tenses:
+        #         tags.extend(tense_to_tag(v_t))
     return tags
+
+
+def tense_to_tag(tense_tuple):
+    t = tense_tuple[0]
+    person = tense_tuple[1]
+    aspect = tense_tuple[3]
+    if t == INFINITIVE:
+        return ['VVI']
+    if t == PRESENT:
+        if aspect == PROGRESSIVE:
+            return ['VVG']
+        if person == 3:
+            return ['VVZ']
+        return ['VVB', 'VVI']
+    if t == PAST:
+        if aspect == PROGRESSIVE:
+            return ['VVN']
+        return ['VVD']

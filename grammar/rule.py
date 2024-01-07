@@ -108,6 +108,8 @@ class Rule:
                     word = conjugate(verb=word, person=1, number=PLURAL, tense=tense)
                 elif pronoun == 'you':
                     word = conjugate(verb=word, perons=2, number=PLURAL, tense=tense)  # I know it can be singular
+            elif 'number' in d and 'tense' in d:
+                word = conjugate(verb=word, person=3, number=d['number'], tense=d['tense'])
             elif 'tense' in d:
                 word = conjugate(verb=word, tense=d['tense'])
             correct.append(word)
