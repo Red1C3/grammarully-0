@@ -26,3 +26,10 @@ class Buffer:
         else:
             self._buffer += char
             return self._buffer, 0
+
+    def pop_char(self):
+        self._buffer = self._buffer[:-1]
+
+    def set_without_processing(self, text):
+        self._buffer = text
+        return self._buffer

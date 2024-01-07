@@ -32,6 +32,22 @@ class TkWindow:
             replace = self.write_char_to_buffer(' ')
         elif event.keysym == 'KP_Delete' or event.keysym == 'period':
             replace = self.write_char_to_buffer('.')
+        elif event.keysym == 'BackSpace':
+            if len(self.buffer_cache) > 0:
+                self.buffer.pop_char()
+            else:
+                self.text = self.text[:-1]
+                stop_token_index = -1
+                for stop_token in Buffer.STOP_TOKENS:
+                    try:
+                        idx = self.text.rindex(stop_token)
+                    except ValueError:
+                        continue
+                    stop_token_index = max(stop_token_index, idx)
+                if stop_token_index != -1:
+                    self.buffer_cache = self.buffer.set_without_processing(self.text[stop_token_index + 1:])
+                    self.text = self.text[:stop_token_index + 1]
+            replace = False
         else:
             print(event.keysym)
             replace = False
