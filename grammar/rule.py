@@ -88,9 +88,14 @@ class Rule:
                     word = [word]
                     until = d['until_word']
                     idx = d['idx'] + 1
-                    while tagged[idx][0] != until:
-                        word.append(tagged[idx][0])
-                        idx += 1
+                    if type(until) is tuple:
+                        while tagged[idx][0] not in until:
+                            word.append(tagged[idx][0])
+                            idx += 1
+                    else:
+                        while tagged[idx][0] != until:
+                            word.append(tagged[idx][0])
+                            idx += 1
                     word = str.join(' ', word)
 
             if 'const' in d:
