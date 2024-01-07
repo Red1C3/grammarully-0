@@ -135,6 +135,10 @@ class Checker:
                  ({'idx': 1},))
         )  # 34
         self.rules.append(
+            Rule(['w','w','p'],['a','much','NN1'],
+                 ({'idx':1},{'idx':2}))
+        ) # 35
+        self.rules.append(
             Rule(['w', 'p'], [('more', 'most'), 'AJS'],
                  ({'idx': 1},))
         )  # 36
