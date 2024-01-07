@@ -86,6 +86,9 @@ _test_pairs = [
      'can someone please please can a can'),
     ('we are a cats', 'we are the cats'),
     # ('the cats likes you','the cats like you'), #FIXME not working due to the tagger tagging likes VVI, works when heavy verbs conjugator is on
+    ('Mike always went to feed cats', 'Mike always goes to feed cats'),
+    ('He often go to feed cats', 'He often goes to feed cats'),
+    ('i never go to kick cats', 'i never go to kick cats'),
 ]
 
 
