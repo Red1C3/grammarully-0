@@ -91,6 +91,10 @@ _test_pairs = [
     ('i never go to kick cats', 'i never go to kick cats'),
     ('thank the cat fore her patience','thank the cat for her patience'),
     ('this will be a much work','this will be much work'),
+    ('the big the good cat','the big good cat'),
+    ('a big a good cat','a big good cat'),
+    ('the big a good cat','the big good cat'),
+    ('a big the good cat','a big good cat'),
 ]
 
 
