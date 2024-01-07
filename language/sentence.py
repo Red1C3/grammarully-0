@@ -20,7 +20,7 @@ class Sentence:
                 word_possibilties.append((w_tags[0],[tag]))
             all_possibilites.append(word_possibilties)
         l= list(product(*all_possibilites))
-        return bnc
+        return l
 
     def subsititue(self, i, length, correction: list[str]):
         list_of_str = word_tokenize(self.raw_sentence)

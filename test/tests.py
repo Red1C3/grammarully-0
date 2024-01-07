@@ -23,10 +23,10 @@ _test_pairs = [
     ('please not that you are nut sure if you are living in a simulation',
      'please note that you are not sure if you are living in a simulation'),
     ('or way that a cat', 'or was that a cat'),
-    # ('thanks for the responds','thanks for the response'), #FIXME fails due to ambiguous tagging
+    ('thanks for the responds', 'thanks for the response'),
     ('the only thing i can think off is cats',
      'the only thing i can think of is cats'),
-    # ('please do not us the cat','please do not use the cat'), #FIXME fails due to PTB2BNC mapping, force tag negation to XX0 tag to fix
+    ('please do not us the cat','please do not use the cat'),
     # ('i use to use the cat','i used to use the cat'), #FIXME fails because PTB never tags lexical verbs as special lexical verbs
     ('i thing it is a good idea', 'i think it is a good idea'),
     ('he thing so', 'he thinks so'),
@@ -38,7 +38,7 @@ _test_pairs = [
     # ('i think your confused about it', 'i think you are confused about it'),
     # ('he is less weirder then his cat', 'he is less weirder than his cat'),
     ('he is more cat then his cat', 'he is more cat than his cat'),
-    # ('the the cat is nice', 'the cat is nice'), #FIXME fails due to POS ambiguety
+    ('the the cat is nice', 'the cat is nice'),
     ('what do you mean than', 'what do you mean then'),
     ('i am eager to trying out dying', 'i am eager to try out dying'),
     ('i a eager to trying out dying', 'i am eager to try out dying'),
@@ -85,10 +85,11 @@ _test_pairs = [
     ('does someone please please can can a can',
      'can someone please please can a can'),
     ('we are a cats', 'we are the cats'),
+    # ('the cats likes you','the cats like you'), #FIXME not working due to the tagger tagging likes VVI, works when heavy verbs conjugator is on
 ]
 
 
-def run_tests(max_iterations=10):
+def run_tests(max_iterations=10, verbose=False):
     c = Checker()
     for t in _test_pairs:
         res = _test(t[0], t[1], c, max_iterations)
@@ -101,6 +102,8 @@ def run_tests(max_iterations=10):
             for rule in res[2]:
                 print('index:', rule[0], '| Rule:', rule[1])
             print('='*20)
+        elif verbose:
+            print('TEST PASSED')
     print('FINISHED TESTING')
 
 
