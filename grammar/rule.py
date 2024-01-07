@@ -97,7 +97,7 @@ class Rule:
                 word = d['const']
             if 'pronoun_idx' in d and 'tense' in d:
                 tense = d['tense']
-                pronoun = tagged[d['pronoun_idx']][0]
+                pronoun = tagged[d['pronoun_idx']][0].lower()
                 if pronoun == 'i':
                     word = conjugate(verb=word, person=1, number=SINGULAR, tense=tense)
                 elif pronoun in ['he', 'she', 'it']:
@@ -108,6 +108,8 @@ class Rule:
                     word = conjugate(verb=word, person=1, number=PLURAL, tense=tense)
                 elif pronoun == 'you':
                     word = conjugate(verb=word, perons=2, number=PLURAL, tense=tense)  # I know it can be singular
+                else:
+                    word = conjugate(verb=word, person=3, number=SINGULAR, tense=tense)
             elif 'number' in d and 'tense' in d:
                 word = conjugate(verb=word, person=3, number=d['number'], tense=d['tense'])
             elif 'tense' in d:
