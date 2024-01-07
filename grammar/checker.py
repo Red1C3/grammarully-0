@@ -93,6 +93,10 @@ class Checker:
                  ({'const', 'where'}, {'idx': 1}))
         )  # 23
         self.rules.append(
+            Rule(['w','p'],['fore','DPS'],
+                 ({'const':'for'},{'idx':1}))
+        )# 25
+        self.rules.append(
             Rule(['w', 'w', 'p'], ['not', 'too', ('SENT_END', 'NN0', 'NN1', 'NN2')],
                  ({'idx': 0}, {'const': 'two'}, {'idx': 2}))
         )  # 26
@@ -131,6 +135,10 @@ class Checker:
                  ({'idx': 1},))
         )  # 34
         self.rules.append(
+            Rule(['w','w','p'],['a','much','NN1'],
+                 ({'idx':1},{'idx':2}))
+        ) # 35
+        self.rules.append(
             Rule(['w', 'p'], [('more', 'most'), 'AJS'],
                  ({'idx': 1},))
         )  # 36
@@ -138,6 +146,10 @@ class Checker:
             Rule(['w', 'w'], ['is', ('should', 'could', 'would')],
                  ({'const': 'it'}, {'idx': 1}))
         )  # 37
+        self.rules.append(
+            Rule(['p','p','p'],['DT0','AJ0','DT0'],
+                 ({'idx':0},{'idx':1}))
+        ) # 38+39
         self.rules.append(
             Rule(['w', 'w', 'p'], [Rule.negative('has', 'will', 'must', 'could', 'can', 'should', 'would', 'does', 'did'), ('he','she','it'), ('VVI', 'VVB')],
                  ({'idx': 0}, {'idx': 1}, {'idx': 2, 'tense': PRESENT, 'pronoun_idx': 1}))
