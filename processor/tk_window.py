@@ -10,6 +10,7 @@ class TkWindow:
 
         self.root = Tk()
         self.root.geometry('400x300')
+        self.root.title('grammarly-0')
         self.sv = StringVar()
         self.text_box = Text(self.root)
         self.text_box.bind('<KeyRelease>', self.on_key_release)
