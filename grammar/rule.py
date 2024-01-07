@@ -92,6 +92,11 @@ class Rule:
                         while tagged[idx][0] not in until:
                             word.append(tagged[idx][0])
                             idx += 1
+                    elif type(until) is int:
+                        until_words = self.incorrect_pattern[until]
+                        while tagged[idx][0] not in until_words:
+                            word.append(tagged[idx][0])
+                            idx += 1
                     else:
                         while tagged[idx][0] != until:
                             word.append(tagged[idx][0])
