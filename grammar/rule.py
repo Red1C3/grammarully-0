@@ -51,7 +51,7 @@ class Rule:
                     for comp in sub_tagged:
                         if cur_const == len(self.construct):
                             baked_sub_tagged_str = str.join(' ', baked_sub_tagged)
-                            if re.match(Rule.pattern_re_string(self.incorrect_pattern), baked_sub_tagged_str):
+                            if re.match(Rule.pattern_re_string(self.incorrect_pattern).lower(), baked_sub_tagged_str.lower()):
                                 return i, len(baked_sub_tagged), poss
                             else:
                                 break
@@ -73,7 +73,7 @@ class Rule:
                     sub_tagged = tagged[i:con_len + i]
                     sub_tagged = [x[0] if self.construct[i] == 'w' else x[1][0] for i, x in enumerate(sub_tagged)]
                     sub_tagged_str = str.join(' ', sub_tagged)
-                    if re.match(Rule.pattern_re_string(self.incorrect_pattern), sub_tagged_str):
+                    if re.match(Rule.pattern_re_string(self.incorrect_pattern).lower(), sub_tagged_str.lower()):
                         return i, len(sub_tagged), poss
         return -1, 0, 0
 
