@@ -12,6 +12,8 @@ class Checker:
         self.initRules()
 
     def initRules(self):
+        present_simple_kw = ('never','always','often','usually', 'regularly', 'every.*', 'daily','seldom','normally','generally','sometimes','rarely')
+
         self.rules.append(
             Rule(['w', 'w', 'p'], ["more", ("a", "an"), 'AJ0'],
                  ({'idx': 1}, {'idx': 0}, {'idx': 2}))
@@ -211,12 +213,12 @@ class Checker:
                  ({'idx': 0}, {'idx': 1, 'tense': PRESENT, 'number': PLURAL}))
         )  # C1: plural names should not be followed by 3rd singular present
         self.rules.append(
-            Rule(['p', 'w', 'p'], [('NN.','PNP','NP0'),('always','often','usually', 'regularly', 'every.*', 'daily','seldom','normally','generally','sometimes','rarely'), 'VV.'],
+            Rule(['p', 'w', 'p'], [('NN.','PNP','NP0'),present_simple_kw, 'VV.'],
                  ({'idx': 0}, {'idx': 1}, {'idx':2 ,'tense': PRESENT, 'pronoun_idx': 0}))
         )  # Present Simple 1
         self.rules.append(
-            Rule(['p', 'p', 'b', 'w'], [('NN.','PNP','NP0'), 'VV.','.*',('always','often','usually', 'regularly', 'every.*', 'daily','seldom','normally','generally','sometimes','rarely')],
-                 ({'idx': 0}, {'idx':1 ,'tense': PRESENT, 'pronoun_idx': 0}, {'idx': 2,'until_word':3},{'idx':-1}))
+            Rule(['p', 'p', 'b', 'w'], [('NN.','PNP','NP0'), 'VV.','.*',present_simple_kw],
+                 ({'idx': 0}, {'idx':1 ,'tense': PRESENT, 'pronoun_idx': 0}, {'idx': 2,'until_word':present_simple_kw},{'idx':-1}))
         )  # Present Simple 2
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
