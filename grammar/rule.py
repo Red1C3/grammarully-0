@@ -64,8 +64,8 @@ class Rule:
                         elif self.construct[cur_const] == 'b':
                             baked_sub_tagged.append(comp[0])
                             lookup_const = self.incorrect_pattern[cur_const + 1]
-                            if (self.construct[cur_const + 1] == 'w' and lookup_const == comp[0]) or \
-                                    (self.construct[cur_const + 1] == 'p' and lookup_const == comp[1][0]):
+                            if (self.construct[cur_const + 1] == 'w' and comp[0] in lookup_const ) or \
+                                    (self.construct[cur_const + 1] == 'p' and comp[1][0] in lookup_const):
                                 cur_const += 2
 
             else:
