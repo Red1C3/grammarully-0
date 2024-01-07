@@ -224,11 +224,27 @@ class Checker:
                  ({'idx': 0}, {'idx': 1, 'tense': PRESENT, 'pronoun_idx': 0}))
         )  # C2: 1st and 2nd person pronouns must not be followed by 3rd person verbs
         self.rules.append(
-            Rule(['p', 'w', 'p'], [('NN.','PNP','NP0'),present_simple_kw, 'VV.'],
+            Rule(['w', 'w', 'p'], [('i','we','you','they'),present_simple_kw, ('VVB','VVD','VVG','VVZ','VVN')],
+                 ({'idx': 0}, {'idx': 1}, {'idx':2 ,'tense': PRESENT, 'pronoun_idx': 0}))
+        )  # Present Simple 1 PNP
+        self.rules.append(
+            Rule(['w', 'w', 'p'], [('he', 'she', 'it'),present_simple_kw, ('VVB','VVD','VVG','VVI','VVN')],
+                 ({'idx': 0}, {'idx': 1}, {'idx':2 ,'tense': PRESENT, 'pronoun_idx': 0}))
+        )  # Present Simple 1 PNP
+        self.rules.append(
+            Rule(['p', 'w', 'p'], [('NN.','NP0'),present_simple_kw, ('VVB','VVD','VVG','VVI','VVN')],
                  ({'idx': 0}, {'idx': 1}, {'idx':2 ,'tense': PRESENT, 'pronoun_idx': 0}))
         )  # Present Simple 1
         self.rules.append(
-            Rule(['p', 'p', 'b', 'w'], [('NN.','PNP','NP0'), 'VV.','.*',present_simple_kw],
+            Rule(['w', 'p', 'b', 'w'], [('i','we','you','they'), ('VVB','VVD','VVG','VVZ','VVN'),'.*',present_simple_kw],
+                 ({'idx': 0}, {'idx':1 ,'tense': PRESENT, 'pronoun_idx': 0}, {'idx': 2,'until_word':present_simple_kw},{'idx':-1}))
+        )  # Present Simple 2 PNP
+        self.rules.append(
+            Rule(['w', 'p', 'b', 'w'], [('he', 'she', 'it'), ('VVB','VVD','VVG','VVI','VVN'),'.*',present_simple_kw],
+                 ({'idx': 0}, {'idx':1 ,'tense': PRESENT, 'pronoun_idx': 0}, {'idx': 2,'until_word':present_simple_kw},{'idx':-1}))
+        )  # Present Simple 2 PNP
+        self.rules.append(
+            Rule(['p', 'p', 'b', 'w'], [('NN.','NP0'), ('VVB','VVD','VVG','VVI','VVN'),'.*',present_simple_kw],
                  ({'idx': 0}, {'idx':1 ,'tense': PRESENT, 'pronoun_idx': 0}, {'idx': 2,'until_word':present_simple_kw},{'idx':-1}))
         )  # Present Simple 2
 
