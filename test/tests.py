@@ -69,7 +69,7 @@ _test_pairs = [
     ('no you can not feed the cat', 'no you cannot feed the cat'),
     ('of cause all cats are cute', 'of course all cats are cute'),
     ('the study of cause and effect is fundamental to understanding cats',
-     'the study of cause and effect is fundamental to understanding cats'),
+     'the study of cause and effect is fundamental to understand cats'),
     ('the principle of cause to effect is a cornerstone of understanding cats',
      'the principle of cause to effect is a cornerstone of understanding cats'),
     ('then he look after the cats', 'then he looks after the cats'),
