@@ -122,6 +122,8 @@ class Rule:
                     word = conjugate(verb=word, person=3, number=SINGULAR, tense=tense)
             elif 'number' in d and 'tense' in d:
                 word = conjugate(verb=word, person=3, number=d['number'], tense=d['tense'])
+            elif 'aspect' in d and 'tense' in d:
+                word = conjugate(verb=word, aspect=d['aspect'], tense=d['tense'])
             elif 'tense' in d:
                 word = conjugate(verb=word, tense=d['tense'])
             correct.append(word)

@@ -1,6 +1,6 @@
 from grammar.rule import Rule
 from language.sentence import Sentence
-from pattern.text.en import PAST, PRESENT, INFINITIVE, PARTICIPLE
+from pattern.text.en import PAST, PRESENT, INFINITIVE, PARTICIPLE,PROGRESSIVE
 from pattern.text.en import PLURAL
 
 class Checker:
@@ -14,7 +14,7 @@ class Checker:
     def initRules(self):
         past_simple_kw = ('yesterday','last','ago', 'when')
         present_simple_kw = ('never','always','often','usually', 'regularly', 'every.*', 'daily','seldom','normally','generally','sometimes','rarely')
-        present_continuous_kw = ('at present','now.*','at this moment','at this time','next','today')
+        present_continuous_kw = ('at present','now','at this moment','at this time','next','today')
 
         self.rules.append(
             Rule(['w', 'w', 'p'], ["more", ("a", "an"), 'AJ0'],
@@ -253,7 +253,7 @@ class Checker:
         )  # Past Simple
         self.rules.append(
             Rule(['p','p', 'p', 'b', 'w'], [('NN.','NP0','PNP'), ('VBI'),('VVB','VVD','VVZ','VVN','VVI'),'.*',present_continuous_kw],
-                 ({'idx': 0},{'idx':1}, {'idx':2 ,'tense': PARTICIPLE}, {'idx': 3,'until_word':present_continuous_kw},{'idx':-1}))
+                 ({'idx': 0},{'idx':1}, {'idx':2 ,'tense': PRESENT,'aspect':PROGRESSIVE}, {'idx': 3,'until_word':present_continuous_kw},{'idx':-1}))
         )  # Present Continuous
         self.rules.append(
             Rule(['p','w', 'p'], [('NN.','NP0','PNP'), 'will',('VVG','VVD','VVZ','VVN')],
