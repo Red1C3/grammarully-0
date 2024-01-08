@@ -1,7 +1,7 @@
 from pattern.text.en import INFINITIVE, PAST, PRESENT, PROGRESSIVE
 from pattern.text.en import conjugate, tenses
 from itertools import chain
-
+import sys
 _ptb2bnc_map = {
     'CC': ['CJC'],
     'CD': ['CRD'],
@@ -74,11 +74,11 @@ def enhance_treebank_tag(word, tbt):
         elif inf_form == 'have':
             tags.append('VH' + ('I' if len(tbt) != 3 or str(tbt[2]) == 'P' else str(tbt[2])))
         # This has increased the complexity A LOT
-        # else:
-        #     v_tenses=tenses(word)
-        #     if len(v_tenses)==1:
-        #         return tense_to_tag(v_tenses[0]),False
-        #     tags=list(set(chain(*tags,*map(tense_to_tag,v_tenses))))
+        elif len(sys.argv)>1 and  sys.argv[1] == 'editor':
+            v_tenses=tenses(word)
+            if len(v_tenses)==1:
+                return tense_to_tag(v_tenses[0]),False
+            tags=list(set(chain(*tags,*map(tense_to_tag,v_tenses))))
     return tags, True
 
 def tense_to_tag(tense_tuple):
