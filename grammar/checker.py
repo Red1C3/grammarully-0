@@ -12,6 +12,7 @@ class Checker:
         self.initRules()
 
     def initRules(self):
+        past_simple_kw = ('yesterday','last','ago', 'when')
         present_simple_kw = ('never','always','often','usually', 'regularly', 'every.*', 'daily','seldom','normally','generally','sometimes','rarely')
         present_continuous_kw = ('at present','now.*','at this moment','at this time','next','today')
 
@@ -246,6 +247,10 @@ class Checker:
             Rule(['p', 'p', 'b', 'w'], [('NN.','NP0'), ('VVB','VVD','VVG','VVI','VVN'),'.*',present_simple_kw],
                  ({'idx': 0}, {'idx':1 ,'tense': PRESENT, 'pronoun_idx': 0}, {'idx': 2,'until_word':present_simple_kw},{'idx':-1}))
         )  # Present Simple 2
+        self.rules.append(
+            Rule(['p', 'p', 'b', 'w'], [('NN.','NP0','PNP'), ('VVB','VVZ','VVG','VVI','VVN'),'.*',past_simple_kw],
+                 ({'idx': 0}, {'idx':1 ,'tense': PAST}, {'idx': 2,'until_word':past_simple_kw},{'idx':-1}))
+        )  # Past Simple
         self.rules.append(
             Rule(['p','p', 'p', 'b', 'w'], [('NN.','NP0','PNP'), ('VBI'),('VVB','VVD','VVZ','VVN','VVI'),'.*',present_continuous_kw],
                  ({'idx': 0},{'idx':1}, {'idx':2 ,'tense': PARTICIPLE, 'pronoun_idx': 0}, {'idx': 3,'until_word':present_continuous_kw},{'idx':-1}))

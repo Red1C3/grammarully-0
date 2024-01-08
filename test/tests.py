@@ -105,6 +105,8 @@ _test_pairs = [
     ('i loves cats', 'i love cats'),
     ('we is cats', 'we are cats'),
     ('I am go home next week', 'I am going home next week'),
+    ('I do my homeworks yesterday', 'I did my homeworks yesterday'),
+    ('I am sick last week', 'I was sick last week'),
 ]
 
 
