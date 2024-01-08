@@ -253,7 +253,7 @@ class Checker:
         )  # Past Simple
         self.rules.append(
             Rule(['p','p', 'p', 'b', 'w'], [('NN.','NP0','PNP'), ('VBI'),('VVB','VVD','VVZ','VVN','VVI'),'.*',present_continuous_kw],
-                 ({'idx': 0},{'idx':1}, {'idx':2 ,'tense': PARTICIPLE, 'pronoun_idx': 0}, {'idx': 3,'until_word':present_continuous_kw},{'idx':-1}))
+                 ({'idx': 0},{'idx':1}, {'idx':2 ,'tense': PARTICIPLE}, {'idx': 3,'until_word':present_continuous_kw},{'idx':-1}))
         )  # Present Continuous
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
