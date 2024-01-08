@@ -13,6 +13,7 @@ class Checker:
 
     def initRules(self):
         present_simple_kw = ('never','always','often','usually', 'regularly', 'every.*', 'daily','seldom','normally','generally','sometimes','rarely')
+        present_continuous_kw = ('at present','now.*','at this moment','at this time','next','today')
 
         self.rules.append(
             Rule(['w', 'w', 'p'], ["more", ("a", "an"), 'AJ0'],
@@ -127,9 +128,7 @@ class Checker:
                  ({'idx': 0}, {'const': 'course'}, {'idx': 2}))
         )  # 32
         self.rules.append(
-            Rule(['w', 'w', 'p'], ['eager', 'to', (
-                'VBB', 'VBD', 'VBG', 'VBN', 'VBZ', 'VDB', 'VDD', 'VDG', 'VDI', 'VDN', 'VDZ', 'VHB', 'VHD', 'VHG', 'VHI',
-                'VHN', 'VHZ', 'VM0', 'VVB', 'VVD', 'VVG', 'VVN', 'VVZ')],
+            Rule(['w', 'w', 'p'], ['eager', 'to', ('VM0', 'VVB', 'VVD', 'VVG', 'VVN', 'VVZ')],
                 ({'idx': 0}, {'idx': 1}, {'idx': 2, 'tense': INFINITIVE}))
         )  # 33
         self.rules.append(
@@ -247,6 +246,10 @@ class Checker:
             Rule(['p', 'p', 'b', 'w'], [('NN.','NP0'), ('VVB','VVD','VVG','VVI','VVN'),'.*',present_simple_kw],
                  ({'idx': 0}, {'idx':1 ,'tense': PRESENT, 'pronoun_idx': 0}, {'idx': 2,'until_word':present_simple_kw},{'idx':-1}))
         )  # Present Simple 2
+        self.rules.append(
+            Rule(['p','p', 'p', 'b', 'w'], [('NN.','NP0','PNP'), ('VBI'),('VVB','VVD','VVZ','VVN','VVI'),'.*',present_continuous_kw],
+                 ({'idx': 0},{'idx':1}, {'idx':2 ,'tense': PARTICIPLE, 'pronoun_idx': 0}, {'idx': 3,'until_word':present_continuous_kw},{'idx':-1}))
+        )  # Present Continuous
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for j in range(max_iterations):
