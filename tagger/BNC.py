@@ -17,6 +17,7 @@ _ptb2bnc_map = {
     'NN': ['NN0', 'NN1'],
     'NNS': ['NN2'],
     'NNP': ['NP0'],
+    'NNP-LOC': ['NP0'],
     'NNPS': ['NP0'],
     'PDT': ['DT0'],
     'POS': ['POS'],
