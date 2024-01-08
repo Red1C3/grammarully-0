@@ -104,6 +104,7 @@ _test_pairs = [
     ('please type in a from your cats names', 'please type in a form your cats names'),
     ('i loves cats', 'i love cats'),
     ('we is cats', 'we are cats'),
+    ('I am go home next week', 'I am going home next week'),
 ]
 
 
