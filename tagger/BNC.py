@@ -67,11 +67,11 @@ def enhance_treebank_tag(word, tbt):
     if 'VB' in tbt:
         inf_form = conjugate(verb=word, tense=INFINITIVE)
         if inf_form == 'be':
-            tags.append('VB' + (str(tbt[2]) if len(tbt) == 3 else 'B'))
+            tags.append('VB' + ('I' if str(tbt[2]) == 'P' or len(tbt) != 3 else str(tbt[2])))
         elif inf_form == 'do':
-            tags.append('VD' + (str(tbt[2]) if len(tbt) == 3 else 'B'))
+            tags.append('VD' + ('I' if str(tbt[2]) == 'P' or len(tbt) != 3 else str(tbt[2])))
         elif inf_form == 'have':
-            tags.append('VH' + (str(tbt[2]) if len(tbt) == 3 else 'B'))
+            tags.append('VH' + ('I' if str(tbt[2]) == 'P' or len(tbt) != 3 else str(tbt[2])))
         # This has increased the complexity A LOT
         # else:
         #     v_tenses=tenses(word)
