@@ -30,6 +30,8 @@ class Window:
 
     def loop(self, w: window):
         self.w = w
+        curses.start_color()
+        curses.use_default_colors()
         self.w.addstr(self.text)
         while True:
             try:
