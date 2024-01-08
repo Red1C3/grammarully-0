@@ -34,6 +34,8 @@ class Window:
                 c = w.getch()
             except KeyboardInterrupt:
                 if len(argv) > 2:
+                    if len(argv) > 3:
+                        self.filepath = argv[3]
                     f = open(self.filepath, 'w')
                     f.write(self.text+self.buffer_cache)
                     f.close()
