@@ -255,6 +255,14 @@ class Checker:
             Rule(['p','p', 'p', 'b', 'w'], [('NN.','NP0','PNP'), ('VBI'),('VVB','VVD','VVZ','VVN','VVI'),'.*',present_continuous_kw],
                  ({'idx': 0},{'idx':1}, {'idx':2 ,'tense': PARTICIPLE}, {'idx': 3,'until_word':present_continuous_kw},{'idx':-1}))
         )  # Present Continuous
+        self.rules.append(
+            Rule(['p','w', 'p'], [('NN.','NP0','PNP'), 'will',('VVG','VVD','VVZ','VVN')],
+                 ({'idx': 0},{'idx':1}, {'idx':2 ,'tense': INFINITIVE}))
+        )
+        self.rules.append(
+            Rule(['w', 'p'], ['to',('VVG','VVD','VVZ','VVN')],
+                 ({'idx': 0},{'idx':1 ,'tense': INFINITIVE}))
+        )
 
     def check(self, sentence: Sentence, verbose=False, max_iterations=10):
         for j in range(max_iterations):

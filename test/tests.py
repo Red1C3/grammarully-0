@@ -107,6 +107,8 @@ _test_pairs = [
     ('I am go home next week', 'I am going home next week'),
     ('I do my homeworks yesterday', 'I did my homeworks yesterday'),
     ('I am sick last week', 'I was sick last week'),
+    ('I will eating pizza tomorrow', 'I will eat pizza tomorrow'),
+    ('I am go to doing my homeworks now', 'I am going to do my homeworks now'),
 ]
 
 
