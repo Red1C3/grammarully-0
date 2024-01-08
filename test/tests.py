@@ -27,11 +27,11 @@ _test_pairs = [
     ('the only thing i can think off is cats',
      'the only thing i can think of is cats'),
     ('please do not us the cat','please do not use the cat'),
-    # ('i use to use the cat','i used to use the cat'), #FIXME fails because PTB never tags lexical verbs as special lexical verbs
+    # ('i use to use the cat','i used to use the cat'),
     ('i thing it is a good idea', 'i think it is a good idea'),
     ('he thing so', 'he thinks so'),
     ('we things about it', 'we think about it'),
-    # ('were are you now','where are you now'), #FIXME fails because PTB does not have a special tag for "be" verb
+    # ('were are you now','where are you now'),
     ('he has two cats not too dogs', 'he has two cats not two dogs'),
     ('we are not too far from home', 'we are not too far from home'),
     ('he has one cat not too', 'he has one cat not two'),
@@ -43,7 +43,7 @@ _test_pairs = [
     ('i am eager to trying out dying', 'i am eager to try out dying'),
     ('i a eager to trying out dying', 'i am eager to try out dying'),
     ('should we eat or', 'should we eat'),
-    ('this is the most oldest cat here','this is the oldest cat here'), #FIXME the tagger is deciding it is an adj because it is after the most
+    ('this is the most oldest cat here', 'this is the oldest cat here'),
     ('this is the more largest cat i have ever seen',
      'this is the largest cat i have ever seen'),
     ('i think is should be a good cat', 'i think it should be a good cat'),
@@ -77,11 +77,11 @@ _test_pairs = [
     ('should he pat the cats','should he pat the cats'),
     ('John will see the cats','John will see the cats'),
     ('I will feed the cats','I will feed the cats'),
-    ('John might forgets to feed the cats','John might forget to feed the cats'), #FIXME the tagger is deciding "forgets" is an VVI
-    # ('John will was a cat lover','John will be a cat lover'), #FIXME the tagger is deciding "was"" is an VVD
+    ('John might forgets to feed the cats', 'John might forget to feed the cats'),
+    ('John will was a cat lover', 'John will be a cat lover'),
     # ('I will am a cat lover','I will be a cat lover'), #FIXME the tagger is deciding "am"" is an VVI
-    # ('she will was a cat lover','she will be a cat lover'), #FIXME the tagger is deciding "was"" is an VVD
-    ('she might looks for the cats','she might look for the cats'),  #FIXME the tagger is deciding "looks" is an VVI
+    ('she will was a cat lover', 'she will be a cat lover'),
+    ('she might looks for the cats', 'she might look for the cats'),
     ('does someone please please can can a can',
      'can someone please please can a can'),
     ('we are a cats', 'we are the cats'),
@@ -96,7 +96,7 @@ _test_pairs = [
     ('the big a good cat','the big good cat'),
     ('a big the good cat','a big good cat'),
     ('Jordan patted cats always', 'Jordan pats cats always'),
-    # ('She look after cats every Sunday', 'She looks after cats every Sunday'),
+    ('She look after cats every Sunday', 'She looks after cats every Sunday'),
     ('I seen cats daily', 'I see cats daily'),
     ('he can seen the cats', 'he can see the cats'),
     ('the cat might ate her food', 'the cat might eat her food'),
