@@ -3,6 +3,7 @@ import time
 from curses import window, setsyx
 from curses.ascii import isalnum, ispunct, isspace
 from processor.buffer import Buffer
+from sys import argv
 
 
 class Window:
@@ -11,9 +12,19 @@ class Window:
         self.text = ''
         self.buffer = Buffer()
         self.buffer_cache = ''
+        if len(argv) > 2:
+            self.filepath = argv[2]
+            with open(argv[2]) as txt_file:
+                for line in txt_file:
+                    for c in line:
+                        self.buffer_cache, submit = self.buffer.write_char(c)
+                        if submit > 0:
+                            self.text += self.buffer_cache[:submit]
+                            self.buffer_cache = ''
 
     def loop(self, w: window):
         self.w = w
+        self.w.addstr(self.text)
         while True:
             c = w.getch()
             if isalnum(c) or ispunct(c) or isspace(c):
