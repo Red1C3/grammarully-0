@@ -52,7 +52,7 @@ def PTB2BNC(penn_treebank_tagged_sentence):
         tags, merge = enhance_treebank_tag(word_tag[0], word_tag[1])
         if len(tags) > 0:
             if merge:
-                mapped_tags = list(chain(mapped_tags, tags))
+                mapped_tags = list(set(chain(mapped_tags, tags)))
             else:
                 mapped_tags = tags
         bnc_sent.append((word_tag[0], mapped_tags))
