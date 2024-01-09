@@ -1,6 +1,5 @@
 from tagger.PTB import penn_treebank_tag
 from tagger.BNC import PTB2BNC
-from tagger.CLAWS import claws_tag
 from nltk import word_tokenize
 from itertools import product
 class Sentence:
@@ -31,6 +30,3 @@ class Sentence:
 
     def get_striped(self):
         return self.raw_sentence[len(Sentence.START_TOKEN[0]) + 1:-len(Sentence.END_TOKEN[0]) - 1]
-
-    #def get_claws_tag(self):
-        #claws_tag(self)
