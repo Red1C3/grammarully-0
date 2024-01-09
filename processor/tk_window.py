@@ -13,7 +13,7 @@ class TkWindow:
         filemenu = Menu(menubar)
         filemenu.add_command(label='New', command=self.clear_text_box)
         filemenu.add_command(label='Open', command=self.open_file)
-        filemenu.add_command(label='Save')
+        filemenu.add_command(label='Save', command=self.save_file)
         filemenu.add_separator()
         filemenu.add_command(label='Quit', command=self.root.quit)
         menubar.add_cascade(label='File', menu=filemenu)
@@ -45,5 +45,12 @@ class TkWindow:
         try:
             with filedialog.askopenfile(mode='r') as f:
                 self.text_box.replace('1.0', END, f.read())
+        except TypeError:
+            pass
+
+    def save_file(self):
+        try:
+            with filedialog.asksaveasfile(mode='w') as f:
+                f.write(self.text_box.get('1.0', END))
         except TypeError:
             pass
