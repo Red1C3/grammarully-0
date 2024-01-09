@@ -10,7 +10,7 @@ class TkWindow:
         menubar = Menu(self.root)
 
         filemenu = Menu(menubar)
-        filemenu.add_command(label='New')
+        filemenu.add_command(label='New', command=self.clear_text_box)
         filemenu.add_command(label='Open')
         filemenu.add_command(label='Save')
         filemenu.add_separator()
@@ -36,3 +36,6 @@ class TkWindow:
                 correct_text += buffer_cache
 
         self.text_box.replace('1.0', END, correct_text)
+
+    def clear_text_box(self):
+        self.text_box.replace('1.0', END, '')
