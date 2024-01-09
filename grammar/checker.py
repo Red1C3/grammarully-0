@@ -248,12 +248,32 @@ class Checker:
                  ({'idx': 0}, {'idx':1 ,'tense': PRESENT, 'pronoun_idx': 0}, {'idx': 2,'until_word':present_simple_kw},{'idx':-1}))
         )  # Present Simple 2
         self.rules.append(
+            Rule(['w', 'p', 'w'], [('i','we','you','they'), ('VVB','VVD','VVG','VVZ','VVN'),present_simple_kw],
+                 ({'idx': 0}, {'idx':1 ,'tense': PRESENT, 'pronoun_idx': 0},{'idx':-1}))
+        )  # Present Simple 2 PNP
+        self.rules.append(
+            Rule(['w', 'p', 'w'], [('he', 'she', 'it'), ('VVB','VVD','VVG','VVI','VVN'),present_simple_kw],
+                 ({'idx': 0}, {'idx':1 ,'tense': PRESENT, 'pronoun_idx': 0},{'idx':-1}))
+        )  # Present Simple 2 PNP
+        self.rules.append(
+            Rule(['p', 'p', 'w'], [('NN.','NP0'), ('VVB','VVD','VVG','VVI','VVN'),present_simple_kw],
+                 ({'idx': 0}, {'idx':1 ,'tense': PRESENT, 'pronoun_idx': 0},{'idx':-1}))
+        )  # Present Simple 2
+        self.rules.append(
             Rule(['p', 'p', 'b', 'w'], [('NN.','NP0','PNP'), ('VVB','VVZ','VVG','VVI','VVN'),'.*',past_simple_kw],
                  ({'idx': 0}, {'idx':1 ,'tense': PAST}, {'idx': 2,'until_word':past_simple_kw},{'idx':-1}))
         )  # Past Simple
         self.rules.append(
             Rule(['p','p', 'p', 'b', 'w'], [('NN.','NP0','PNP'), ('VBI'),('VVB','VVD','VVZ','VVN','VVI'),'.*',present_continuous_kw],
                  ({'idx': 0},{'idx':1}, {'idx':2 ,'tense': PRESENT,'aspect':PROGRESSIVE}, {'idx': 3,'until_word':present_continuous_kw},{'idx':-1}))
+        )  # Present Continuous
+        self.rules.append(
+            Rule(['p', 'p', 'w'], [('NN.','NP0','PNP'), ('VVB','VVZ','VVG','VVI','VVN'),past_simple_kw],
+                 ({'idx': 0}, {'idx':1 ,'tense': PAST},{'idx':-1}))
+        )  # Past Simple
+        self.rules.append(
+            Rule(['p','p', 'p', 'w'], [('NN.','NP0','PNP'), ('VBI'),('VVB','VVD','VVZ','VVN','VVI'),present_continuous_kw],
+                 ({'idx': 0},{'idx':1}, {'idx':2 ,'tense': PRESENT,'aspect':PROGRESSIVE},{'idx':-1}))
         )  # Present Continuous
         self.rules.append(
             Rule(['p','p', 'p'], [('NN.','NP0','PNP'), 'VM0',('VVG','VVD','VVZ','VVN')],
