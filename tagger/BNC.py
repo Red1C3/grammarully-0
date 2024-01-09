@@ -80,13 +80,15 @@ def enhance_treebank_tag(word, tbt):
         # This has increased the complexity A LOT
         elif len(sys.argv)>1 and  sys.argv[1] == 'editor':
             v_tenses=tenses(word)
-            tags=list(set(chain(*tags,*map(tense_to_tag,[v_tenses[0]]))))
+            if len(v_tenses)>0:
+                tags=list(set(chain(*tags,*map(tense_to_tag,[v_tenses[0]]))))
     elif len(sys.argv)>1 and  sys.argv[1] == 'editor':
         for tmp in wn.synsets(word,pos=wn.VERB):
             if tmp.name().split('.')[0] == inf_form and tmp.pos()=='v':
                 v_tenses=tenses(word)
-                tags=list(set(chain(*tags,*map(tense_to_tag,[v_tenses[0]]))))
-                break
+                if len(v_tenses)>0:
+                    tags=list(set(chain(*tags,*map(tense_to_tag,[v_tenses[0]]))))
+                    break
     return tags, True
 
 def tense_to_tag(tense_tuple):
