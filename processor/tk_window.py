@@ -1,4 +1,5 @@
 from tkinter import *
+import tkinter.filedialog as filedialog
 from processor.buffer import Buffer
 
 
@@ -11,7 +12,7 @@ class TkWindow:
 
         filemenu = Menu(menubar)
         filemenu.add_command(label='New', command=self.clear_text_box)
-        filemenu.add_command(label='Open')
+        filemenu.add_command(label='Open', command=self.open_file)
         filemenu.add_command(label='Save')
         filemenu.add_separator()
         filemenu.add_command(label='Quit', command=self.root.quit)
@@ -39,3 +40,10 @@ class TkWindow:
 
     def clear_text_box(self):
         self.text_box.replace('1.0', END, '')
+
+    def open_file(self):
+        try:
+            with filedialog.askopenfile(mode='r') as f:
+                self.text_box.replace('1.0', END, f.read())
+        except TypeError:
+            pass
