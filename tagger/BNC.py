@@ -2,6 +2,8 @@ from pattern.text.en import INFINITIVE, PAST, PRESENT, PROGRESSIVE
 from pattern.text.en import conjugate, tenses
 from itertools import chain
 import sys
+from nltk.corpus import wordnet as wn
+
 _ptb2bnc_map = {
     'CC': ['CJC'],
     'CD': ['CRD'],
@@ -65,8 +67,10 @@ def enhance_treebank_tag(word, tbt):
         tags.append('DPS')
     if word =='not':
         return ['XX0'], False
+    if tbt == 'MD':
+        return tags, True
+    inf_form = conjugate(verb=word, tense=INFINITIVE)
     if 'VB' in tbt:
-        inf_form = conjugate(verb=word, tense=INFINITIVE)
         if inf_form == 'be':
             tags.append('VB' + ('I' if len(tbt) != 3 or str(tbt[2]) == 'P' else str(tbt[2])))
         elif inf_form == 'do':
@@ -77,6 +81,12 @@ def enhance_treebank_tag(word, tbt):
         elif len(sys.argv)>1 and  sys.argv[1] == 'editor':
             v_tenses=tenses(word)
             tags=list(set(chain(*tags,*map(tense_to_tag,[v_tenses[0]]))))
+    elif len(sys.argv)>1 and  sys.argv[1] == 'editor':
+        for tmp in wn.synsets(word,pos=wn.VERB):
+            if tmp.name().split('.')[0] == inf_form and tmp.pos()=='v':
+                v_tenses=tenses(word)
+                tags=list(set(chain(*tags,*map(tense_to_tag,[v_tenses[0]]))))
+                break
     return tags, True
 
 def tense_to_tag(tense_tuple):
