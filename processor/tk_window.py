@@ -40,10 +40,12 @@ class TkWindow:
 
     def clear_text_box(self):
         self.text_box.replace('1.0', END, '')
+        self.root.title('grammarly-0')
 
     def open_file(self):
         try:
             with filedialog.askopenfile(mode='r') as f:
+                self.root.title('grammarly-0 - ' + f.name)
                 self.text_box.replace('1.0', END, f.read())
         except TypeError:
             pass
@@ -51,6 +53,7 @@ class TkWindow:
     def save_file(self):
         try:
             with filedialog.asksaveasfile(mode='w') as f:
+                self.root.title('grammarly-0 - ' + f.name)
                 f.write(self.text_box.get('1.0', END))
         except TypeError:
             pass
