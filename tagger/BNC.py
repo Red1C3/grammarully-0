@@ -43,9 +43,10 @@ _ptb2bnc_map = {
     'WRB': ['AVQ']
 }
 
-_possive_determinators=[
-    'my','your','his','her','its','their','our'
+_possive_determinators = [
+    'my', 'your', 'his', 'her', 'its', 'their', 'our'
 ]
+
 
 def PTB2BNC(penn_treebank_tagged_sentence):
     bnc_sent = []
@@ -65,31 +66,37 @@ def enhance_treebank_tag(word, tbt):
     tags = []
     if word in _possive_determinators:
         tags.append('DPS')
-    if word =='not':
+    if word == 'not':
         return ['XX0'], False
     if tbt == 'MD':
         return tags, True
     inf_form = conjugate(verb=word, tense=INFINITIVE)
     if 'VB' in tbt:
         if inf_form == 'be':
-            tags.append('VB' + ('I' if len(tbt) != 3 or str(tbt[2]) == 'P' else str(tbt[2])))
+            tags.append('VB' + ('I' if len(tbt) !=
+                        3 or str(tbt[2]) == 'P' else str(tbt[2])))
         elif inf_form == 'do':
-            tags.append('VD' + ('I' if len(tbt) != 3 or str(tbt[2]) == 'P' else str(tbt[2])))
+            tags.append('VD' + ('I' if len(tbt) !=
+                        3 or str(tbt[2]) == 'P' else str(tbt[2])))
         elif inf_form == 'have':
-            tags.append('VH' + ('I' if len(tbt) != 3 or str(tbt[2]) == 'P' else str(tbt[2])))
+            tags.append('VH' + ('I' if len(tbt) !=
+                        3 or str(tbt[2]) == 'P' else str(tbt[2])))
         # This has increased the complexity A LOT
-        elif len(sys.argv)>1 and  sys.argv[1] == 'editor':
-            v_tenses=tenses(word)
-            if len(v_tenses)>0:
-                tags=list(set(chain(*tags,*map(tense_to_tag,[v_tenses[0]]))))
-    elif len(sys.argv)>1 and  sys.argv[1] == 'editor':
-        for tmp in wn.synsets(word,pos=wn.VERB):
-            if tmp.name().split('.')[0] == inf_form and tmp.pos()=='v':
-                v_tenses=tenses(word)
-                if len(v_tenses)>0:
-                    tags=list(set(chain(*tags,*map(tense_to_tag,[v_tenses[0]]))))
+        elif len(sys.argv) > 1 and (sys.argv[1] == 'editor' or sys.argv[1] == 'tk'):
+            v_tenses = tenses(word)
+            if len(v_tenses) > 0:
+                tags = list(
+                    set(chain(*tags, *map(tense_to_tag, [v_tenses[0]]))))
+    elif len(sys.argv) > 1 and (sys.argv[1] == 'editor' or sys.argv[1] == 'tk'):
+        for tmp in wn.synsets(word, pos=wn.VERB):
+            if tmp.name().split('.')[0] == inf_form and tmp.pos() == 'v':
+                v_tenses = tenses(word)
+                if len(v_tenses) > 0:
+                    tags = list(
+                        set(chain(*tags, *map(tense_to_tag, [v_tenses[0]]))))
                     break
     return tags, True
+
 
 def tense_to_tag(tense_tuple):
     if INFINITIVE in tense_tuple:
