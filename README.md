@@ -19,7 +19,7 @@ Most of the rules were inspired by [Daniel Naber work](https://www.danielnaber.d
 The project uses C5 tag-set, it guesses first the tags using PennTreebank set and converts them to C5 using a conversion map and  apply dictionary lookup afterwards.
 
 ## Troubleshoot
-If you're using a recent Python version, `pattern` library will not work as it is in PyPI, you can either [patch it manually](https://github.com/piskvorky/gensim/issues/2438#issuecomment-644753776) or install a [patched version](https://github.com/i-be-snek/pattern-StopIteration-fix) instead.
+If you're using a recent Python version (3.7+), `pattern` library will not work as it is in PyPI, you can either [patch it manually](https://github.com/piskvorky/gensim/issues/2438#issuecomment-644753776) or install a [patched version](https://github.com/i-be-snek/pattern-StopIteration-fix) instead.
 
 ## License
 [GPL-3.0-or-later](./LICENSE)
